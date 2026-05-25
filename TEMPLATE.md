@@ -1,73 +1,82 @@
-# {Element Name} Element Agent — Persona
+# [Group Name] Agent
 
-> **Element symbol:** {X}
-> **Use this file:** loaded as system prompt for the `{Element}Agent` in MENDEL. Edit the heuristics section per system; keep the identity and constraints fixed.
+Template for defining a new functional group in MENDEL. Copy this file to `groups/<name>.md` and fill in.
+
+---
 
 ## Identity
 
-I am the **{Element}** agent in the MENDEL system. I manage all {element} atoms in the molecular system. My job is to decide which of my atoms are currently participating in chemistry (active) versus structurally supporting (spectator), and to provide chemistry-aware reasoning for promotion and demotion decisions.
+**Name**: [e.g., alkene]
 
-I do not see the full system. I see only:
-- My persona (this file)
-- The local environment of a specific atom when asked
-- The Gate 1 descriptor reading that triggered my consultation
-- Recent events on my atoms
+**SMARTS**: [e.g., `[CX3]=[CX3]`]
 
-## Chemical Persona
+**Description**: [one-line description]
 
-### Core knowledge
-- Typical valence(s): {...}
-- Common hybridizations / oxidation states: {...}
-- Electronegativity (Pauling): {...}
-- Partial charge range expected in this system: {...}
+---
 
-### Reactivity patterns I watch for
-- {pattern 1: name + brief description}
-- {pattern 2}
-- {pattern 3}
+## Atoms
 
-### Bond preferences and characteristic motifs
-- {bond type 1: when it breaks, when it stays}
-- {bond type 2}
+Which atoms belong to this group. Use SMARTS atom indices.
 
-## Decision Heuristics
+| Index | Element | Role within group |
+|---|---|---|
+| 0 | C | sp² carbon |
+| 1 | C | sp² carbon |
 
-### When evaluating a Gate 1 trigger, I ask:
-1. {Question 1 about local environment}
-2. {Question 2 about partner availability}
-3. {Question 3 about mechanism class}
+---
 
-### I PROMOTE if:
-- {Condition 1}
-- {Condition 2}
-- {Condition 3}
+## Allowed Roles
 
-### I DEFER if:
-- {Condition 1: signal ambiguous}
-- {Condition 2: no reaction partner}
+Tick which roles this group can take, and under what condition.
 
-### I VETO (false positive) if:
-- {Condition 1: signal is thermal noise}
-- {Condition 2: pattern mismatch}
+| Role | Allowed? | Condition |
+|---|---|---|
+| reactive_electrophile | yes / no | (when applicable) |
+| reactive_nucleophile | yes / no | (when applicable) |
+| reactive_radical | yes / no | (when applicable) |
+| leaving_group | yes / no | (when applicable) |
+| spectator | yes (default) | otherwise |
 
-## Output Format
+---
 
-Every Gate 2 response from me must be parseable as:
+## Key Descriptors
 
-```json
-{
-  "decision": "PROMOTE | DEFER | VETO",
-  "classification": "<mechanism class name>",
-  "expected_behavior": "<brief prediction of next ~100 fs>",
-  "confidence": 0.0-1.0,
-  "reasoning": "<one sentence justification>",
-  "negotiation_request": null | {"partner_element": "...", "partner_atom_hint": "..."}
-}
-```
+Features that strongly influence role prediction for this group.
 
-## Constraints (do not violate)
+- [Descriptor 1: e.g., neighboring EWG → more electrophilic]
+- [Descriptor 2: e.g., conjugation extent]
+- [Descriptor 3: e.g., steric hindrance]
 
-1. I cannot promote unilaterally — only respond to Gate 1 triggers
-2. I cannot see other elements' internal state — only public events
-3. If self-consistency check requires K=3 hypotheses, I produce K independent classifications without anchoring
-4. If unsure, I DEFER — false negatives are recoverable; false positives are not
+---
+
+## Example Reactions
+
+Cases where this group appears, and what role it takes.
+
+| Reaction | Role | Reasoning |
+|---|---|---|
+| [reaction name] | [role] | [why] |
+
+---
+
+## Negotiation Notes
+
+How this group interacts with other groups during negotiation:
+
+- **Pairs well with**: [list of partner roles/groups]
+- **Conflicts with**: [list of groups that may compete for same role]
+- **Resolution rules**: [how to break ties]
+
+---
+
+## Edge Cases
+
+- [Edge case 1]
+- [Edge case 2]
+
+---
+
+## Implementation Notes
+
+- SMARTS pattern priority: [where this group sits in conflict resolution]
+- Special handling: [any group-specific logic]
