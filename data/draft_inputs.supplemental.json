@@ -1,0 +1,275 @@
+[
+  {
+    "reaction_id": "supp_sn2_methyl_chloride_iodide",
+    "reaction_smiles": "[CH3:1][Cl:2].[I-:3]>>[CH3:1][I:3].[Cl-:2]",
+    "context": "ionic",
+    "mechanism_type": "SN2",
+    "split": "draft",
+    "metadata": {
+      "source": "supplemental_draft",
+      "class": "SN2",
+      "labeling_note": "Label detected alkyl halide/halide group as leaving_group. Iodide nucleophile may not be detected as a functional group.",
+      "needs_manual_review": true
+    }
+  },
+  {
+    "reaction_id": "supp_sn2_methyl_bromide_azide",
+    "reaction_smiles": "[CH3:1][Br:2].[N-:3]=[N+:4]=[N-:5]>>[CH3:1][N:3]=[N+:4]=[N-:5].[Br-:2]",
+    "context": "ionic",
+    "mechanism_type": "SN2",
+    "split": "draft",
+    "metadata": {
+      "source": "supplemental_draft",
+      "class": "SN2",
+      "labeling_note": "Label detected halide group as leaving_group. Azide nucleophile is likely unsupported by current group schema.",
+      "needs_manual_review": true
+    }
+  },
+  {
+    "reaction_id": "supp_sn2_benzyl_chloride_methoxide",
+    "reaction_smiles": "[CH2:1]([Cl:2])[c:3]1[cH:4][cH:5][cH:6][cH:7][cH:8]1.[O-:9][CH3:10]>>[CH2:1]([O:9][CH3:10])[c:3]1[cH:4][cH:5][cH:6][cH:7][cH:8]1.[Cl-:2]",
+    "context": "ionic",
+    "mechanism_type": "SN2",
+    "split": "draft",
+    "metadata": {
+      "source": "supplemental_draft",
+      "class": "SN2",
+      "labeling_note": "Halide should be leaving_group. Aromatic usually spectator. Benzylic_site may represent electrophilic site but should be reviewed.",
+      "needs_manual_review": true
+    }
+  },
+  {
+    "reaction_id": "supp_sn2_ethyl_bromide_thiolate",
+    "reaction_smiles": "[CH3:1][CH2:2][Br:3].[S-:4][CH3:5]>>[CH3:1][CH2:2][S:4][CH3:5].[Br-:3]",
+    "context": "ionic",
+    "mechanism_type": "SN2",
+    "split": "draft",
+    "metadata": {
+      "source": "supplemental_draft",
+      "class": "SN2",
+      "labeling_note": "Label halide as leaving_group. Thiolate nucleophile may be unsupported by current functional group list.",
+      "needs_manual_review": true
+    }
+  },
+  {
+    "reaction_id": "supp_e2_2_bromobutane_hydroxide",
+    "reaction_smiles": "[CH3:1][CH:2]([Br:3])[CH2:4][CH3:5].[OH-:6]>>[CH3:1][CH:2]=[CH:4][CH3:5].[Br-:3].[OH2:6]",
+    "context": "ionic",
+    "mechanism_type": "E2",
+    "split": "draft",
+    "metadata": {
+      "source": "supplemental_draft",
+      "class": "E2",
+      "labeling_note": "Label halide as leaving_group. Beta C-H/base are not represented as current functional groups.",
+      "needs_manual_review": true
+    }
+  },
+  {
+    "reaction_id": "supp_e2_cyclohexyl_bromide_hydroxide",
+    "reaction_smiles": "C1CCC(Br)CC1.[OH-]>>C1=CCCCC1.[Br-].[OH2]",
+    "context": "ionic",
+    "mechanism_type": "E2",
+    "split": "draft",
+    "metadata": {
+      "source": "supplemental_draft",
+      "class": "E2",
+      "labeling_note": "Label halide as leaving_group. Ring conformation and anti-periplanar geometry are out of scope.",
+      "needs_manual_review": true
+    }
+  },
+  {
+    "reaction_id": "supp_aldol_acetaldehyde_self",
+    "reaction_smiles": "[CH3:1][CH:2]=[O:3].[CH3:4][CH:5]=[O:6]>>[CH3:1][CH:2]([OH:6])[CH2:4][CH:5]=[O:3]",
+    "context": "ionic",
+    "mechanism_type": "Aldol",
+    "split": "draft",
+    "metadata": {
+      "source": "supplemental_draft",
+      "class": "aldol",
+      "labeling_note": "Use negotiation output to choose donor alpha_carbon and acceptor carbonyl; manually check atom mapping/product simplification.",
+      "needs_manual_review": true
+    }
+  },
+  {
+    "reaction_id": "supp_aldol_acetaldehyde_benzaldehyde",
+    "reaction_smiles": "[CH3:1][CH:2]=[O:3].[O:4]=[CH:5][c:6]1[cH:7][cH:8][cH:9][cH:10][cH:11]1>>[CH3:1][CH:2]([OH:4])[CH:5]([c:6]1[cH:7][cH:8][cH:9][cH:10][cH:11]1)",
+    "context": "ionic",
+    "mechanism_type": "cross_aldol",
+    "split": "draft",
+    "metadata": {
+      "source": "supplemental_draft",
+      "class": "aldol",
+      "labeling_note": "Acetaldehyde alpha_carbon donor; benzaldehyde carbonyl acceptor; aromatic spectator.",
+      "needs_manual_review": true
+    }
+  },
+  {
+    "reaction_id": "supp_aldol_acetone_benzaldehyde",
+    "reaction_smiles": "[CH3:1][C:2](=[O:3])[CH3:4].[O:5]=[CH:6][c:7]1[cH:8][cH:9][cH:10][cH:11][cH:12]1>>[CH3:1][C:2](=[O:3])[CH2:4][CH:6]([OH:5])[c:7]1[cH:8][cH:9][cH:10][cH:11][cH:12]1",
+    "context": "ionic",
+    "mechanism_type": "cross_aldol",
+    "split": "draft",
+    "metadata": {
+      "source": "supplemental_draft",
+      "class": "aldol",
+      "labeling_note": "Acetone alpha_carbon donor; benzaldehyde carbonyl acceptor; acetone carbonyl may be spectator in bond-forming step.",
+      "needs_manual_review": true
+    }
+  },
+  {
+    "reaction_id": "supp_carbonyl_addition_acetone_cyanide",
+    "reaction_smiles": "[CH3:1][C:2](=[O:3])[CH3:4].[C-:5]#[N:6]>>[CH3:1][C:2]([O-:3])([C:5]#[N:6])[CH3:4]",
+    "context": "ionic",
+    "mechanism_type": "carbonyl_addition",
+    "split": "draft",
+    "metadata": {
+      "source": "supplemental_draft",
+      "class": "carbonyl_addition",
+      "labeling_note": "Reactant carbonyl should be reactive_electrophile. Cyanide nucleophile may not be detected.",
+      "needs_manual_review": true
+    }
+  },
+  {
+    "reaction_id": "supp_carbonyl_addition_acetaldehyde_hydride",
+    "reaction_smiles": "[CH3:1][CH:2]=[O:3].[H-:4]>>[CH3:1][CH:2]([O-:3])[H:4]",
+    "context": "ionic",
+    "mechanism_type": "carbonyl_addition",
+    "split": "draft",
+    "metadata": {
+      "source": "supplemental_draft",
+      "class": "carbonyl_addition",
+      "labeling_note": "Carbonyl should be reactive_electrophile. Hydride is not a supported functional group.",
+      "needs_manual_review": true
+    }
+  },
+  {
+    "reaction_id": "supp_diels_alder_butadiene_acrylonitrile",
+    "reaction_smiles": "[CH2:1]=[CH:2][CH:3]=[CH2:4].[CH2:5]=[CH:6][C:7]#[N:8]>>[CH2:1]1[CH:2]=[CH:3][CH2:4][CH2:5][CH:6]1[C:7]#[N:8]",
+    "context": "pericyclic",
+    "mechanism_type": "Diels-Alder",
+    "split": "draft",
+    "metadata": {
+      "source": "supplemental_draft",
+      "class": "Diels-Alder",
+      "labeling_note": "Butadiene alkenes are diene-like; acrylonitrile alkene is dienophile-like; nitrile likely spectator/EWG for role label.",
+      "needs_manual_review": true
+    }
+  },
+  {
+    "reaction_id": "supp_diels_alder_isoprene_ethylene",
+    "reaction_smiles": "C=C(C)C=C.C=C>>CC1CCC=CC1",
+    "context": "pericyclic",
+    "mechanism_type": "Diels-Alder",
+    "split": "draft",
+    "metadata": {
+      "source": "supplemental_draft",
+      "class": "Diels-Alder",
+      "labeling_note": "Check actual alkene group IDs. Diene-like alkenes reactive_nucleophile; ethylene alkene reactive_electrophile.",
+      "needs_manual_review": true
+    }
+  },
+  {
+    "reaction_id": "supp_diels_alder_cyclopentadiene_acrylonitrile",
+    "reaction_smiles": "C1C=CC=C1.C=CC#N>>N#CC1CC2CC1C2",
+    "context": "pericyclic",
+    "mechanism_type": "Diels-Alder",
+    "split": "draft",
+    "metadata": {
+      "source": "supplemental_draft",
+      "class": "Diels-Alder",
+      "labeling_note": "Cyclopentadiene pi bonds diene-like; acrylonitrile alkene dienophile-like; product may be simplified.",
+      "needs_manual_review": true
+    }
+  },
+  {
+    "reaction_id": "supp_radical_bromination_ethylbenzene",
+    "reaction_smiles": "CCc1ccccc1.BrBr>>CC(Br)c1ccccc1.Br",
+    "context": "radical",
+    "mechanism_type": "benzylic_radical_bromination",
+    "split": "draft",
+    "metadata": {
+      "source": "supplemental_draft",
+      "class": "radical_bromination",
+      "labeling_note": "Benzylic_site should be reactive_radical if detected; aromatic spectator; Br2 unsupported.",
+      "needs_manual_review": true
+    }
+  },
+  {
+    "reaction_id": "supp_radical_bromination_cumene",
+    "reaction_smiles": "CC(C)c1ccccc1.BrBr>>CC(Br)(C)c1ccccc1.Br",
+    "context": "radical",
+    "mechanism_type": "benzylic_radical_bromination",
+    "split": "draft",
+    "metadata": {
+      "source": "supplemental_draft",
+      "class": "radical_bromination",
+      "labeling_note": "Tertiary benzylic_site should be reactive_radical if detected; aromatic spectator; Br2 unsupported.",
+      "needs_manual_review": true
+    }
+  },
+  {
+    "reaction_id": "supp_radical_bromination_toluene",
+    "reaction_smiles": "Cc1ccccc1.BrBr>>BrCc1ccccc1.Br",
+    "context": "radical",
+    "mechanism_type": "benzylic_radical_bromination",
+    "split": "draft",
+    "metadata": {
+      "source": "supplemental_draft",
+      "class": "radical_bromination",
+      "labeling_note": "Benzylic_site reactive_radical; aromatic spectator; Br2 unsupported.",
+      "needs_manual_review": true
+    }
+  },
+  {
+    "reaction_id": "supp_control_phenol_ionic",
+    "reaction_smiles": "c1ccccc1O>>c1ccccc1O",
+    "context": "ionic",
+    "mechanism_type": "control",
+    "split": "draft",
+    "metadata": {
+      "source": "supplemental_draft",
+      "class": "control",
+      "labeling_note": "Likely spectator control unless modeling deprotonation/nucleophilicity. Useful negative example.",
+      "needs_manual_review": true
+    }
+  },
+  {
+    "reaction_id": "supp_control_methyl_acetate",
+    "reaction_smiles": "CC(=O)OC>>CC(=O)OC",
+    "context": "ionic",
+    "mechanism_type": "control_or_acyl_substitution_precursor",
+    "split": "draft",
+    "metadata": {
+      "source": "supplemental_draft",
+      "class": "control",
+      "labeling_note": "If control, ester spectator; if acyl substitution context, ester may be reactive_electrophile. Manual decision needed.",
+      "needs_manual_review": true
+    }
+  },
+  {
+    "reaction_id": "supp_control_acetonitrile",
+    "reaction_smiles": "CC#N>>CC#N",
+    "context": "ionic",
+    "mechanism_type": "control_or_nitrile_electrophile",
+    "split": "draft",
+    "metadata": {
+      "source": "supplemental_draft",
+      "class": "control",
+      "labeling_note": "If control, nitrile spectator; if addition context, nitrile electrophile. Manual decision needed.",
+      "needs_manual_review": true
+    }
+  },
+  {
+    "reaction_id": "supp_nitromethane_base",
+    "reaction_smiles": "C[N+](=O)[O-].[OH-]>>[CH2-][N+](=O)[O-].[OH2]",
+    "context": "ionic",
+    "mechanism_type": "nitroalkane_deprotonation",
+    "split": "draft",
+    "metadata": {
+      "source": "supplemental_draft",
+      "class": "nitroalkane_acidity",
+      "labeling_note": "Nitro group may be spectator/EWG; alpha carbon if detected can be reactive_nucleophile after deprotonation. Manual review required.",
+      "needs_manual_review": true
+    }
+  }
+]

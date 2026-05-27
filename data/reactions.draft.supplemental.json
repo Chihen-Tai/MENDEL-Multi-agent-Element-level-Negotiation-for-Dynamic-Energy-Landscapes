@@ -1,0 +1,924 @@
+{
+  "reactions": [
+    {
+      "reaction_id": "supp_sn2_methyl_chloride_iodide",
+      "reaction_smiles": "[CH3:1][Cl:2].[I-:3]>>[CH3:1][I:3].[Cl-:2]",
+      "context": "ionic",
+      "mechanism_type": "SN2",
+      "split": "draft",
+      "group_roles": [
+        {
+          "group_id": "mol0_halide_0",
+          "molecule_index": 0,
+          "group_type": "halide",
+          "atom_indices": [
+            0,
+            1
+          ],
+          "role": "leaving_group",
+          "confidence": "draft",
+          "notes": "draft_source: phase6_5_draft; final_confidence=0.750; subrole=leaving_group_site; reason: leaving_group_score=0.75 >= threshold 0.5"
+        }
+      ],
+      "reaction_center_atoms": [
+        1,
+        2
+      ],
+      "metadata": {
+        "source": "supplemental_draft",
+        "needs_manual_review": true,
+        "mechanism_hint": "sn2_or_e2_like",
+        "generated_by": "MENDEL Phase 6.5",
+        "warning_count": 2,
+        "class": "SN2",
+        "labeling_note": "Label detected alkyl halide/halide group as leaving_group. Iodide nucleophile may not be detected as a functional group."
+      }
+    },
+    {
+      "reaction_id": "supp_sn2_methyl_bromide_azide",
+      "reaction_smiles": "[CH3:1][Br:2].[N-:3]=[N+:4]=[N-:5]>>[CH3:1][N:3]=[N+:4]=[N-:5].[Br-:2]",
+      "context": "ionic",
+      "mechanism_type": "SN2",
+      "split": "draft",
+      "group_roles": [
+        {
+          "group_id": "mol0_halide_0",
+          "molecule_index": 0,
+          "group_type": "halide",
+          "atom_indices": [
+            0,
+            1
+          ],
+          "role": "leaving_group",
+          "confidence": "draft",
+          "notes": "draft_source: phase6_5_draft; final_confidence=0.850; subrole=leaving_group_site; reason: leaving_group_score=0.85 >= threshold 0.5"
+        }
+      ],
+      "reaction_center_atoms": [
+        1,
+        2
+      ],
+      "metadata": {
+        "source": "supplemental_draft",
+        "needs_manual_review": true,
+        "mechanism_hint": "sn2_or_e2_like",
+        "generated_by": "MENDEL Phase 6.5",
+        "warning_count": 2,
+        "class": "SN2",
+        "labeling_note": "Label detected halide group as leaving_group. Azide nucleophile is likely unsupported by current group schema."
+      }
+    },
+    {
+      "reaction_id": "supp_sn2_benzyl_chloride_methoxide",
+      "reaction_smiles": "[CH2:1]([Cl:2])[c:3]1[cH:4][cH:5][cH:6][cH:7][cH:8]1.[O-:9][CH3:10]>>[CH2:1]([O:9][CH3:10])[c:3]1[cH:4][cH:5][cH:6][cH:7][cH:8]1.[Cl-:2]",
+      "context": "ionic",
+      "mechanism_type": "SN2",
+      "split": "draft",
+      "group_roles": [
+        {
+          "group_id": "mol0_halide_0",
+          "molecule_index": 0,
+          "group_type": "halide",
+          "atom_indices": [
+            0,
+            1
+          ],
+          "role": "leaving_group",
+          "confidence": "draft",
+          "notes": "draft_source: phase6_5_draft; final_confidence=0.750; subrole=leaving_group_site; reason: leaving_group_score=0.75 >= threshold 0.5"
+        }
+      ],
+      "reaction_center_atoms": [
+        1,
+        2
+      ],
+      "metadata": {
+        "source": "supplemental_draft",
+        "needs_manual_review": true,
+        "mechanism_hint": "sn2_or_e2_like",
+        "generated_by": "MENDEL Phase 6.5",
+        "warning_count": 2,
+        "class": "SN2",
+        "labeling_note": "Halide should be leaving_group. Aromatic usually spectator. Benzylic_site may represent electrophilic site but should be reviewed."
+      }
+    },
+    {
+      "reaction_id": "supp_sn2_ethyl_bromide_thiolate",
+      "reaction_smiles": "[CH3:1][CH2:2][Br:3].[S-:4][CH3:5]>>[CH3:1][CH2:2][S:4][CH3:5].[Br-:3]",
+      "context": "ionic",
+      "mechanism_type": "SN2",
+      "split": "draft",
+      "group_roles": [
+        {
+          "group_id": "mol0_halide_0",
+          "molecule_index": 0,
+          "group_type": "halide",
+          "atom_indices": [
+            1,
+            2
+          ],
+          "role": "leaving_group",
+          "confidence": "draft",
+          "notes": "draft_source: phase6_5_draft; final_confidence=0.850; subrole=leaving_group_site; reason: leaving_group_score=0.85 >= threshold 0.5"
+        }
+      ],
+      "reaction_center_atoms": [
+        2,
+        3
+      ],
+      "metadata": {
+        "source": "supplemental_draft",
+        "needs_manual_review": true,
+        "mechanism_hint": "sn2_or_e2_like",
+        "generated_by": "MENDEL Phase 6.5",
+        "warning_count": 2,
+        "class": "SN2",
+        "labeling_note": "Label halide as leaving_group. Thiolate nucleophile may be unsupported by current functional group list."
+      }
+    },
+    {
+      "reaction_id": "supp_e2_2_bromobutane_hydroxide",
+      "reaction_smiles": "[CH3:1][CH:2]([Br:3])[CH2:4][CH3:5].[OH-:6]>>[CH3:1][CH:2]=[CH:4][CH3:5].[Br-:3].[OH2:6]",
+      "context": "ionic",
+      "mechanism_type": "E2",
+      "split": "draft",
+      "group_roles": [
+        {
+          "group_id": "mol0_halide_0",
+          "molecule_index": 0,
+          "group_type": "halide",
+          "atom_indices": [
+            1,
+            2
+          ],
+          "role": "leaving_group",
+          "confidence": "draft",
+          "notes": "draft_source: phase6_5_draft; final_confidence=0.850; subrole=leaving_group_site; reason: leaving_group_score=0.85 >= threshold 0.5"
+        }
+      ],
+      "reaction_center_atoms": [
+        2,
+        3
+      ],
+      "metadata": {
+        "source": "supplemental_draft",
+        "needs_manual_review": true,
+        "mechanism_hint": "sn2_or_e2_like",
+        "generated_by": "MENDEL Phase 6.5",
+        "warning_count": 2,
+        "class": "E2",
+        "labeling_note": "Label halide as leaving_group. Beta C-H/base are not represented as current functional groups."
+      }
+    },
+    {
+      "reaction_id": "supp_e2_cyclohexyl_bromide_hydroxide",
+      "reaction_smiles": "C1CCC(Br)CC1.[OH-]>>C1=CCCCC1.[Br-].[OH2]",
+      "context": "ionic",
+      "mechanism_type": "E2",
+      "split": "draft",
+      "group_roles": [
+        {
+          "group_id": "mol0_halide_0",
+          "molecule_index": 0,
+          "group_type": "halide",
+          "atom_indices": [
+            1,
+            0
+          ],
+          "role": "leaving_group",
+          "confidence": "draft",
+          "notes": "draft_source: phase6_5_draft; final_confidence=0.850; subrole=leaving_group_site; reason: leaving_group_score=0.85 >= threshold 0.5"
+        }
+      ],
+      "reaction_center_atoms": [
+        1,
+        0
+      ],
+      "metadata": {
+        "source": "supplemental_draft",
+        "needs_manual_review": true,
+        "mechanism_hint": "sn2_or_e2_like",
+        "generated_by": "MENDEL Phase 6.5",
+        "warning_count": 2,
+        "class": "E2",
+        "labeling_note": "Label halide as leaving_group. Ring conformation and anti-periplanar geometry are out of scope."
+      }
+    },
+    {
+      "reaction_id": "supp_aldol_acetaldehyde_self",
+      "reaction_smiles": "[CH3:1][CH:2]=[O:3].[CH3:4][CH:5]=[O:6]>>[CH3:1][CH:2]([OH:6])[CH2:4][CH:5]=[O:3]",
+      "context": "ionic",
+      "mechanism_type": "Aldol",
+      "split": "draft",
+      "group_roles": [
+        {
+          "group_id": "mol0_carbonyl_0",
+          "molecule_index": 0,
+          "group_type": "carbonyl",
+          "atom_indices": [
+            1,
+            2
+          ],
+          "role": "reactive_electrophile",
+          "confidence": "draft",
+          "notes": "draft_source: phase6_5_draft; final_confidence=0.700; subrole=aldol_acceptor_carbonyl; reason: selected as primary aldol acceptor (carbonyl electrophile, confidence=0.70); electrophilicity_score=0.70 >= threshold 0.55"
+        },
+        {
+          "group_id": "mol0_alpha_carbon_0",
+          "molecule_index": 0,
+          "group_type": "alpha_carbon",
+          "atom_indices": [
+            0,
+            1
+          ],
+          "role": "reactive_nucleophile",
+          "confidence": "draft",
+          "notes": "draft_source: phase6_5_draft; final_confidence=0.550; subrole=aldol_donor_alpha_carbon; reason: selected as primary aldol donor (alpha_carbon nucleophile, confidence=0.55); alpha carbon represented as nucleophile after deprotonation in v0.1 flat taxonomy (acidity_score=0.55 >= threshold 0.45)"
+        },
+        {
+          "group_id": "mol1_carbonyl_0",
+          "molecule_index": 1,
+          "group_type": "carbonyl",
+          "atom_indices": [
+            1,
+            2
+          ],
+          "role": "reactive_electrophile",
+          "confidence": "draft",
+          "notes": "draft_source: phase6_5_draft; final_confidence=0.700; subrole=none; reason: electrophilicity_score=0.70 >= threshold 0.55"
+        }
+      ],
+      "reaction_center_atoms": [
+        2,
+        3,
+        1
+      ],
+      "metadata": {
+        "source": "supplemental_draft",
+        "needs_manual_review": true,
+        "mechanism_hint": "aldol_like",
+        "generated_by": "MENDEL Phase 6.5",
+        "warning_count": 1,
+        "class": "aldol",
+        "labeling_note": "Use negotiation output to choose donor alpha_carbon and acceptor carbonyl; manually check atom mapping/product simplification."
+      }
+    },
+    {
+      "reaction_id": "supp_aldol_acetaldehyde_benzaldehyde",
+      "reaction_smiles": "[CH3:1][CH:2]=[O:3].[O:4]=[CH:5][c:6]1[cH:7][cH:8][cH:9][cH:10][cH:11]1>>[CH3:1][CH:2]([OH:4])[CH:5]([c:6]1[cH:7][cH:8][cH:9][cH:10][cH:11]1)",
+      "context": "ionic",
+      "mechanism_type": "cross_aldol",
+      "split": "draft",
+      "group_roles": [
+        {
+          "group_id": "mol0_carbonyl_0",
+          "molecule_index": 0,
+          "group_type": "carbonyl",
+          "atom_indices": [
+            1,
+            2
+          ],
+          "role": "reactive_electrophile",
+          "confidence": "draft",
+          "notes": "draft_source: phase6_5_draft; final_confidence=0.700; subrole=aldol_acceptor_carbonyl; reason: selected as primary aldol acceptor (carbonyl electrophile, confidence=0.70); electrophilicity_score=0.70 >= threshold 0.55"
+        },
+        {
+          "group_id": "mol0_alpha_carbon_0",
+          "molecule_index": 0,
+          "group_type": "alpha_carbon",
+          "atom_indices": [
+            0,
+            1
+          ],
+          "role": "reactive_nucleophile",
+          "confidence": "draft",
+          "notes": "draft_source: phase6_5_draft; final_confidence=0.550; subrole=aldol_donor_alpha_carbon; reason: selected as primary aldol donor (alpha_carbon nucleophile, confidence=0.55); alpha carbon represented as nucleophile after deprotonation in v0.1 flat taxonomy (acidity_score=0.55 >= threshold 0.45)"
+        },
+        {
+          "group_id": "mol1_carbonyl_0",
+          "molecule_index": 1,
+          "group_type": "carbonyl",
+          "atom_indices": [
+            1,
+            0
+          ],
+          "role": "reactive_electrophile",
+          "confidence": "draft",
+          "notes": "draft_source: phase6_5_draft; final_confidence=0.700; subrole=none; reason: electrophilicity_score=0.70 >= threshold 0.55"
+        }
+      ],
+      "reaction_center_atoms": [
+        2,
+        3,
+        1
+      ],
+      "metadata": {
+        "source": "supplemental_draft",
+        "needs_manual_review": true,
+        "mechanism_hint": "aldol_like",
+        "generated_by": "MENDEL Phase 6.5",
+        "warning_count": 1,
+        "class": "aldol",
+        "labeling_note": "Acetaldehyde alpha_carbon donor; benzaldehyde carbonyl acceptor; aromatic spectator."
+      }
+    },
+    {
+      "reaction_id": "supp_aldol_acetone_benzaldehyde",
+      "reaction_smiles": "[CH3:1][C:2](=[O:3])[CH3:4].[O:5]=[CH:6][c:7]1[cH:8][cH:9][cH:10][cH:11][cH:12]1>>[CH3:1][C:2](=[O:3])[CH2:4][CH:6]([OH:5])[c:7]1[cH:8][cH:9][cH:10][cH:11][cH:12]1",
+      "context": "ionic",
+      "mechanism_type": "cross_aldol",
+      "split": "draft",
+      "group_roles": [
+        {
+          "group_id": "mol0_carbonyl_0",
+          "molecule_index": 0,
+          "group_type": "carbonyl",
+          "atom_indices": [
+            1,
+            2
+          ],
+          "role": "reactive_electrophile",
+          "confidence": "draft",
+          "notes": "draft_source: phase6_5_draft; final_confidence=0.700; subrole=aldol_acceptor_carbonyl; reason: selected as primary aldol acceptor (carbonyl electrophile, confidence=0.70); electrophilicity_score=0.70 >= threshold 0.55"
+        },
+        {
+          "group_id": "mol0_alpha_carbon_0",
+          "molecule_index": 0,
+          "group_type": "alpha_carbon",
+          "atom_indices": [
+            0,
+            1
+          ],
+          "role": "reactive_nucleophile",
+          "confidence": "draft",
+          "notes": "draft_source: phase6_5_draft; final_confidence=0.550; subrole=aldol_donor_alpha_carbon; reason: selected as primary aldol donor (alpha_carbon nucleophile, confidence=0.55); alpha carbon represented as nucleophile after deprotonation in v0.1 flat taxonomy (acidity_score=0.55 >= threshold 0.45)"
+        },
+        {
+          "group_id": "mol1_carbonyl_0",
+          "molecule_index": 1,
+          "group_type": "carbonyl",
+          "atom_indices": [
+            1,
+            0
+          ],
+          "role": "reactive_electrophile",
+          "confidence": "draft",
+          "notes": "draft_source: phase6_5_draft; final_confidence=0.700; subrole=none; reason: electrophilicity_score=0.70 >= threshold 0.55"
+        }
+      ],
+      "reaction_center_atoms": [
+        2,
+        3,
+        1
+      ],
+      "metadata": {
+        "source": "supplemental_draft",
+        "needs_manual_review": true,
+        "mechanism_hint": "aldol_like",
+        "generated_by": "MENDEL Phase 6.5",
+        "warning_count": 1,
+        "class": "aldol",
+        "labeling_note": "Acetone alpha_carbon donor; benzaldehyde carbonyl acceptor; acetone carbonyl may be spectator in bond-forming step."
+      }
+    },
+    {
+      "reaction_id": "supp_carbonyl_addition_acetone_cyanide",
+      "reaction_smiles": "[CH3:1][C:2](=[O:3])[CH3:4].[C-:5]#[N:6]>>[CH3:1][C:2]([O-:3])([C:5]#[N:6])[CH3:4]",
+      "context": "ionic",
+      "mechanism_type": "carbonyl_addition",
+      "split": "draft",
+      "group_roles": [
+        {
+          "group_id": "mol0_carbonyl_0",
+          "molecule_index": 0,
+          "group_type": "carbonyl",
+          "atom_indices": [
+            1,
+            2
+          ],
+          "role": "reactive_electrophile",
+          "confidence": "draft",
+          "notes": "draft_source: phase6_5_draft; final_confidence=0.700; subrole=aldol_acceptor_carbonyl; reason: selected as primary aldol acceptor (carbonyl electrophile, confidence=0.70); electrophilicity_score=0.70 >= threshold 0.55"
+        },
+        {
+          "group_id": "mol0_alpha_carbon_0",
+          "molecule_index": 0,
+          "group_type": "alpha_carbon",
+          "atom_indices": [
+            0,
+            1
+          ],
+          "role": "reactive_nucleophile",
+          "confidence": "draft",
+          "notes": "draft_source: phase6_5_draft; final_confidence=0.550; subrole=aldol_donor_alpha_carbon; reason: selected as primary aldol donor (alpha_carbon nucleophile, confidence=0.55); alpha carbon represented as nucleophile after deprotonation in v0.1 flat taxonomy (acidity_score=0.55 >= threshold 0.45)"
+        }
+      ],
+      "reaction_center_atoms": [
+        2,
+        3,
+        1
+      ],
+      "metadata": {
+        "source": "supplemental_draft",
+        "needs_manual_review": true,
+        "mechanism_hint": "aldol_like",
+        "generated_by": "MENDEL Phase 6.5",
+        "warning_count": 1,
+        "class": "carbonyl_addition",
+        "labeling_note": "Reactant carbonyl should be reactive_electrophile. Cyanide nucleophile may not be detected."
+      }
+    },
+    {
+      "reaction_id": "supp_carbonyl_addition_acetaldehyde_hydride",
+      "reaction_smiles": "[CH3:1][CH:2]=[O:3].[H-:4]>>[CH3:1][CH:2]([O-:3])[H:4]",
+      "context": "ionic",
+      "mechanism_type": "carbonyl_addition",
+      "split": "draft",
+      "group_roles": [
+        {
+          "group_id": "mol0_carbonyl_0",
+          "molecule_index": 0,
+          "group_type": "carbonyl",
+          "atom_indices": [
+            1,
+            2
+          ],
+          "role": "reactive_electrophile",
+          "confidence": "draft",
+          "notes": "draft_source: phase6_5_draft; final_confidence=0.700; subrole=aldol_acceptor_carbonyl; reason: selected as primary aldol acceptor (carbonyl electrophile, confidence=0.70); electrophilicity_score=0.70 >= threshold 0.55"
+        },
+        {
+          "group_id": "mol0_alpha_carbon_0",
+          "molecule_index": 0,
+          "group_type": "alpha_carbon",
+          "atom_indices": [
+            0,
+            1
+          ],
+          "role": "reactive_nucleophile",
+          "confidence": "draft",
+          "notes": "draft_source: phase6_5_draft; final_confidence=0.550; subrole=aldol_donor_alpha_carbon; reason: selected as primary aldol donor (alpha_carbon nucleophile, confidence=0.55); alpha carbon represented as nucleophile after deprotonation in v0.1 flat taxonomy (acidity_score=0.55 >= threshold 0.45)"
+        }
+      ],
+      "reaction_center_atoms": [
+        2,
+        3,
+        1
+      ],
+      "metadata": {
+        "source": "supplemental_draft",
+        "needs_manual_review": true,
+        "mechanism_hint": "aldol_like",
+        "generated_by": "MENDEL Phase 6.5",
+        "warning_count": 1,
+        "class": "carbonyl_addition",
+        "labeling_note": "Carbonyl should be reactive_electrophile. Hydride is not a supported functional group."
+      }
+    },
+    {
+      "reaction_id": "supp_diels_alder_butadiene_acrylonitrile",
+      "reaction_smiles": "[CH2:1]=[CH:2][CH:3]=[CH2:4].[CH2:5]=[CH:6][C:7]#[N:8]>>[CH2:1]1[CH:2]=[CH:3][CH2:4][CH2:5][CH:6]1[C:7]#[N:8]",
+      "context": "pericyclic",
+      "mechanism_type": "Diels-Alder",
+      "split": "draft",
+      "group_roles": [
+        {
+          "group_id": "mol0_alkene_0",
+          "molecule_index": 0,
+          "group_type": "alkene",
+          "atom_indices": [
+            0,
+            1
+          ],
+          "role": "reactive_nucleophile",
+          "confidence": "draft",
+          "notes": "draft_source: phase6_5_draft; final_confidence=0.450; subrole=diene_like; reason: confirmed as diene partner (reactive_nucleophile, confidence=0.45); pericyclic context: pi-system assigned reactive_nucleophile (nucleophilicity_score=0.35 >= electrophilicity_score=0.25); v0.1 flat taxonomy represents pericyclic partners as nucleophile/electrophile"
+        },
+        {
+          "group_id": "mol0_alkene_1",
+          "molecule_index": 0,
+          "group_type": "alkene",
+          "atom_indices": [
+            2,
+            3
+          ],
+          "role": "reactive_nucleophile",
+          "confidence": "draft",
+          "notes": "draft_source: phase6_5_draft; final_confidence=0.450; subrole=diene_like; reason: confirmed as diene partner (reactive_nucleophile, confidence=0.45); pericyclic context: pi-system assigned reactive_nucleophile (nucleophilicity_score=0.35 >= electrophilicity_score=0.25); v0.1 flat taxonomy represents pericyclic partners as nucleophile/electrophile"
+        },
+        {
+          "group_id": "mol1_nitrile_0",
+          "molecule_index": 1,
+          "group_type": "nitrile",
+          "atom_indices": [
+            2,
+            3
+          ],
+          "role": "reactive_electrophile",
+          "confidence": "draft",
+          "notes": "draft_source: phase6_5_draft; final_confidence=0.600; subrole=none; reason: pericyclic context: pi-system assigned reactive_electrophile (electrophilicity_score=0.50 > nucleophilicity_score=0.10); v0.1 flat taxonomy represents pericyclic partners as nucleophile/electrophile"
+        },
+        {
+          "group_id": "mol1_alkene_0",
+          "molecule_index": 1,
+          "group_type": "alkene",
+          "atom_indices": [
+            0,
+            1
+          ],
+          "role": "reactive_electrophile",
+          "confidence": "draft",
+          "notes": "draft_source: phase6_5_draft; final_confidence=0.500; subrole=dienophile_like; reason: reassigned reactive_nucleophile → reactive_electrophile as dienophile by global Diels-Alder negotiation; avoids all-nucleophile assignment from Phase 5 flat taxonomy"
+        }
+      ],
+      "reaction_center_atoms": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6
+      ],
+      "metadata": {
+        "source": "supplemental_draft",
+        "needs_manual_review": true,
+        "mechanism_hint": "diels_alder_like",
+        "generated_by": "MENDEL Phase 6.5",
+        "warning_count": 0,
+        "class": "Diels-Alder",
+        "labeling_note": "Butadiene alkenes are diene-like; acrylonitrile alkene is dienophile-like; nitrile likely spectator/EWG for role label."
+      }
+    },
+    {
+      "reaction_id": "supp_diels_alder_isoprene_ethylene",
+      "reaction_smiles": "C=C(C)C=C.C=C>>CC1CCC=CC1",
+      "context": "pericyclic",
+      "mechanism_type": "Diels-Alder",
+      "split": "draft",
+      "group_roles": [
+        {
+          "group_id": "mol0_alkene_0",
+          "molecule_index": 0,
+          "group_type": "alkene",
+          "atom_indices": [
+            0,
+            1
+          ],
+          "role": "reactive_nucleophile",
+          "confidence": "draft",
+          "notes": "draft_source: phase6_5_draft; final_confidence=0.450; subrole=diene_like; reason: confirmed as diene partner (reactive_nucleophile, confidence=0.45); pericyclic context: pi-system assigned reactive_nucleophile (nucleophilicity_score=0.35 >= electrophilicity_score=0.25); v0.1 flat taxonomy represents pericyclic partners as nucleophile/electrophile"
+        },
+        {
+          "group_id": "mol0_alkene_1",
+          "molecule_index": 0,
+          "group_type": "alkene",
+          "atom_indices": [
+            2,
+            3
+          ],
+          "role": "reactive_nucleophile",
+          "confidence": "draft",
+          "notes": "draft_source: phase6_5_draft; final_confidence=0.450; subrole=diene_like; reason: confirmed as diene partner (reactive_nucleophile, confidence=0.45); pericyclic context: pi-system assigned reactive_nucleophile (nucleophilicity_score=0.35 >= electrophilicity_score=0.25); v0.1 flat taxonomy represents pericyclic partners as nucleophile/electrophile"
+        },
+        {
+          "group_id": "mol1_alkene_0",
+          "molecule_index": 1,
+          "group_type": "alkene",
+          "atom_indices": [
+            0,
+            1
+          ],
+          "role": "reactive_electrophile",
+          "confidence": "draft",
+          "notes": "draft_source: phase6_5_draft; final_confidence=0.500; subrole=dienophile_like; reason: reassigned reactive_nucleophile → reactive_electrophile as dienophile by global Diels-Alder negotiation; avoids all-nucleophile assignment from Phase 5 flat taxonomy"
+        }
+      ],
+      "reaction_center_atoms": [
+        0,
+        1,
+        2,
+        3
+      ],
+      "metadata": {
+        "source": "supplemental_draft",
+        "needs_manual_review": true,
+        "mechanism_hint": "diels_alder_like",
+        "generated_by": "MENDEL Phase 6.5",
+        "warning_count": 0,
+        "class": "Diels-Alder",
+        "labeling_note": "Check actual alkene group IDs. Diene-like alkenes reactive_nucleophile; ethylene alkene reactive_electrophile."
+      }
+    },
+    {
+      "reaction_id": "supp_diels_alder_cyclopentadiene_acrylonitrile",
+      "reaction_smiles": "C1C=CC=C1.C=CC#N>>N#CC1CC2CC1C2",
+      "context": "pericyclic",
+      "mechanism_type": "Diels-Alder",
+      "split": "draft",
+      "group_roles": [
+        {
+          "group_id": "mol0_alkene_0",
+          "molecule_index": 0,
+          "group_type": "alkene",
+          "atom_indices": [
+            0,
+            1
+          ],
+          "role": "reactive_nucleophile",
+          "confidence": "draft",
+          "notes": "draft_source: phase6_5_draft; final_confidence=0.450; subrole=diene_like; reason: confirmed as diene partner (reactive_nucleophile, confidence=0.45); pericyclic context: pi-system assigned reactive_nucleophile (nucleophilicity_score=0.35 >= electrophilicity_score=0.25); v0.1 flat taxonomy represents pericyclic partners as nucleophile/electrophile"
+        },
+        {
+          "group_id": "mol0_alkene_1",
+          "molecule_index": 0,
+          "group_type": "alkene",
+          "atom_indices": [
+            3,
+            4
+          ],
+          "role": "reactive_nucleophile",
+          "confidence": "draft",
+          "notes": "draft_source: phase6_5_draft; final_confidence=0.450; subrole=diene_like; reason: confirmed as diene partner (reactive_nucleophile, confidence=0.45); pericyclic context: pi-system assigned reactive_nucleophile (nucleophilicity_score=0.35 >= electrophilicity_score=0.25); v0.1 flat taxonomy represents pericyclic partners as nucleophile/electrophile"
+        },
+        {
+          "group_id": "mol1_nitrile_0",
+          "molecule_index": 1,
+          "group_type": "nitrile",
+          "atom_indices": [
+            2,
+            3
+          ],
+          "role": "reactive_electrophile",
+          "confidence": "draft",
+          "notes": "draft_source: phase6_5_draft; final_confidence=0.600; subrole=none; reason: pericyclic context: pi-system assigned reactive_electrophile (electrophilicity_score=0.50 > nucleophilicity_score=0.10); v0.1 flat taxonomy represents pericyclic partners as nucleophile/electrophile"
+        },
+        {
+          "group_id": "mol1_alkene_0",
+          "molecule_index": 1,
+          "group_type": "alkene",
+          "atom_indices": [
+            0,
+            1
+          ],
+          "role": "reactive_electrophile",
+          "confidence": "draft",
+          "notes": "draft_source: phase6_5_draft; final_confidence=0.500; subrole=dienophile_like; reason: reassigned reactive_nucleophile → reactive_electrophile as dienophile by global Diels-Alder negotiation; avoids all-nucleophile assignment from Phase 5 flat taxonomy"
+        }
+      ],
+      "reaction_center_atoms": [
+        0,
+        1,
+        3,
+        4
+      ],
+      "metadata": {
+        "source": "supplemental_draft",
+        "needs_manual_review": true,
+        "mechanism_hint": "diels_alder_like",
+        "generated_by": "MENDEL Phase 6.5",
+        "warning_count": 0,
+        "class": "Diels-Alder",
+        "labeling_note": "Cyclopentadiene pi bonds diene-like; acrylonitrile alkene dienophile-like; product may be simplified."
+      }
+    },
+    {
+      "reaction_id": "supp_radical_bromination_ethylbenzene",
+      "reaction_smiles": "CCc1ccccc1.BrBr>>CC(Br)c1ccccc1.Br",
+      "context": "radical",
+      "mechanism_type": "benzylic_radical_bromination",
+      "split": "draft",
+      "group_roles": [
+        {
+          "group_id": "mol0_benzylic_site_0",
+          "molecule_index": 0,
+          "group_type": "benzylic_site",
+          "atom_indices": [
+            1,
+            2
+          ],
+          "role": "reactive_radical",
+          "confidence": "draft",
+          "notes": "draft_source: phase6_5_draft; final_confidence=0.800; subrole=none; reason: benzylic_site in radical context: resonance-stabilised radical (radical_stability_score=0.80)"
+        }
+      ],
+      "reaction_center_atoms": [
+        1,
+        2
+      ],
+      "metadata": {
+        "source": "supplemental_draft",
+        "needs_manual_review": true,
+        "mechanism_hint": "radical_bromination_like",
+        "generated_by": "MENDEL Phase 6.5",
+        "warning_count": 1,
+        "class": "radical_bromination",
+        "labeling_note": "Benzylic_site should be reactive_radical if detected; aromatic spectator; Br2 unsupported."
+      }
+    },
+    {
+      "reaction_id": "supp_radical_bromination_cumene",
+      "reaction_smiles": "CC(C)c1ccccc1.BrBr>>CC(Br)(C)c1ccccc1.Br",
+      "context": "radical",
+      "mechanism_type": "benzylic_radical_bromination",
+      "split": "draft",
+      "group_roles": [
+        {
+          "group_id": "mol0_benzylic_site_0",
+          "molecule_index": 0,
+          "group_type": "benzylic_site",
+          "atom_indices": [
+            1,
+            3
+          ],
+          "role": "reactive_radical",
+          "confidence": "draft",
+          "notes": "draft_source: phase6_5_draft; final_confidence=0.800; subrole=none; reason: benzylic_site in radical context: resonance-stabilised radical (radical_stability_score=0.80)"
+        }
+      ],
+      "reaction_center_atoms": [
+        1,
+        3
+      ],
+      "metadata": {
+        "source": "supplemental_draft",
+        "needs_manual_review": true,
+        "mechanism_hint": "radical_bromination_like",
+        "generated_by": "MENDEL Phase 6.5",
+        "warning_count": 1,
+        "class": "radical_bromination",
+        "labeling_note": "Tertiary benzylic_site should be reactive_radical if detected; aromatic spectator; Br2 unsupported."
+      }
+    },
+    {
+      "reaction_id": "supp_radical_bromination_toluene",
+      "reaction_smiles": "Cc1ccccc1.BrBr>>BrCc1ccccc1.Br",
+      "context": "radical",
+      "mechanism_type": "benzylic_radical_bromination",
+      "split": "draft",
+      "group_roles": [
+        {
+          "group_id": "mol0_benzylic_site_0",
+          "molecule_index": 0,
+          "group_type": "benzylic_site",
+          "atom_indices": [
+            0,
+            1
+          ],
+          "role": "reactive_radical",
+          "confidence": "draft",
+          "notes": "draft_source: phase6_5_draft; final_confidence=0.800; subrole=none; reason: benzylic_site in radical context: resonance-stabilised radical (radical_stability_score=0.80)"
+        }
+      ],
+      "reaction_center_atoms": [
+        0,
+        1
+      ],
+      "metadata": {
+        "source": "supplemental_draft",
+        "needs_manual_review": true,
+        "mechanism_hint": "radical_bromination_like",
+        "generated_by": "MENDEL Phase 6.5",
+        "warning_count": 1,
+        "class": "radical_bromination",
+        "labeling_note": "Benzylic_site reactive_radical; aromatic spectator; Br2 unsupported."
+      }
+    },
+    {
+      "reaction_id": "supp_control_phenol_ionic",
+      "reaction_smiles": "c1ccccc1O>>c1ccccc1O",
+      "context": "ionic",
+      "mechanism_type": "control",
+      "split": "draft",
+      "group_roles": [],
+      "reaction_center_atoms": [],
+      "metadata": {
+        "source": "supplemental_draft",
+        "needs_manual_review": true,
+        "mechanism_hint": "unknown",
+        "generated_by": "MENDEL Phase 6.5",
+        "warning_count": 1,
+        "class": "control",
+        "labeling_note": "Likely spectator control unless modeling deprotonation/nucleophilicity. Useful negative example."
+      }
+    },
+    {
+      "reaction_id": "supp_control_methyl_acetate",
+      "reaction_smiles": "CC(=O)OC>>CC(=O)OC",
+      "context": "ionic",
+      "mechanism_type": "control_or_acyl_substitution_precursor",
+      "split": "draft",
+      "group_roles": [
+        {
+          "group_id": "mol0_ester_0",
+          "molecule_index": 0,
+          "group_type": "ester",
+          "atom_indices": [
+            2,
+            4,
+            1,
+            0
+          ],
+          "role": "reactive_electrophile",
+          "confidence": "draft",
+          "notes": "draft_source: phase6_5_draft; final_confidence=0.650; subrole=ionic_electrophile_candidate; reason: electrophilicity_score=0.65 >= threshold 0.55"
+        },
+        {
+          "group_id": "mol0_alpha_carbon_0",
+          "molecule_index": 0,
+          "group_type": "alpha_carbon",
+          "atom_indices": [
+            3,
+            2
+          ],
+          "role": "reactive_nucleophile",
+          "confidence": "draft",
+          "notes": "draft_source: phase6_5_draft; final_confidence=0.550; subrole=ionic_nucleophile_candidate; reason: alpha carbon represented as nucleophile after deprotonation in v0.1 flat taxonomy (acidity_score=0.55 >= threshold 0.45)"
+        }
+      ],
+      "reaction_center_atoms": [
+        2,
+        4,
+        1,
+        0,
+        3
+      ],
+      "metadata": {
+        "source": "supplemental_draft",
+        "needs_manual_review": true,
+        "mechanism_hint": "ionic_addition_like",
+        "generated_by": "MENDEL Phase 6.5",
+        "warning_count": 0,
+        "class": "control",
+        "labeling_note": "If control, ester spectator; if acyl substitution context, ester may be reactive_electrophile. Manual decision needed."
+      }
+    },
+    {
+      "reaction_id": "supp_control_acetonitrile",
+      "reaction_smiles": "CC#N>>CC#N",
+      "context": "ionic",
+      "mechanism_type": "control_or_nitrile_electrophile",
+      "split": "draft",
+      "group_roles": [
+        {
+          "group_id": "mol0_alpha_carbon_0",
+          "molecule_index": 0,
+          "group_type": "alpha_carbon",
+          "atom_indices": [
+            0,
+            1
+          ],
+          "role": "reactive_nucleophile",
+          "confidence": "draft",
+          "notes": "draft_source: phase6_5_draft; final_confidence=0.550; subrole=none; reason: alpha carbon represented as nucleophile after deprotonation in v0.1 flat taxonomy (acidity_score=0.55 >= threshold 0.45)"
+        }
+      ],
+      "reaction_center_atoms": [
+        0,
+        1
+      ],
+      "metadata": {
+        "source": "supplemental_draft",
+        "needs_manual_review": true,
+        "mechanism_hint": "unknown",
+        "generated_by": "MENDEL Phase 6.5",
+        "warning_count": 1,
+        "class": "control",
+        "labeling_note": "If control, nitrile spectator; if addition context, nitrile electrophile. Manual decision needed."
+      }
+    },
+    {
+      "reaction_id": "supp_nitromethane_base",
+      "reaction_smiles": "C[N+](=O)[O-].[OH-]>>[CH2-][N+](=O)[O-].[OH2]",
+      "context": "ionic",
+      "mechanism_type": "nitroalkane_deprotonation",
+      "split": "draft",
+      "group_roles": [
+        {
+          "group_id": "mol0_alpha_carbon_0",
+          "molecule_index": 0,
+          "group_type": "alpha_carbon",
+          "atom_indices": [
+            0,
+            1
+          ],
+          "role": "reactive_nucleophile",
+          "confidence": "draft",
+          "notes": "draft_source: phase6_5_draft; final_confidence=0.550; subrole=none; reason: alpha carbon represented as nucleophile after deprotonation in v0.1 flat taxonomy (acidity_score=0.55 >= threshold 0.45)"
+        }
+      ],
+      "reaction_center_atoms": [
+        0,
+        1
+      ],
+      "metadata": {
+        "source": "supplemental_draft",
+        "needs_manual_review": true,
+        "mechanism_hint": "unknown",
+        "generated_by": "MENDEL Phase 6.5",
+        "warning_count": 1,
+        "class": "nitroalkane_acidity",
+        "labeling_note": "Nitro group may be spectator/EWG; alpha carbon if detected can be reactive_nucleophile after deprotonation. Manual review required."
+      }
+    }
+  ]
+}
