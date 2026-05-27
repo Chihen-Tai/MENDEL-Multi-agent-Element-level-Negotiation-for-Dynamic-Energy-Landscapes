@@ -439,14 +439,82 @@ def summarize_training_examples(
         group_type_counts[gt] = group_type_counts.get(gt, 0) + 1
         split_counts[ex.split] = split_counts.get(ex.split, 0) + 1
 
+    counts = list(role_counts.values())
+    missing_roles = [role for role, count in role_counts.items() if count == 0]
+    roles_below_10 = [role for role, count in role_counts.items() if count < 10]
+
     return TrainingDatasetSummary(
         n_examples=n,
         n_features=n_features,
         role_counts=role_counts,
         group_type_counts=group_type_counts,
         split_counts=split_counts,
-        metadata={"schema_version": FEATURE_SCHEMA_VERSION},
+        metadata={
+            "schema_version": FEATURE_SCHEMA_VERSION,
+            "min_role_count": min(counts) if counts else 0,
+            "max_role_count": max(counts) if counts else 0,
+            "missing_roles": ",".join(missing_roles),
+            "roles_below_10": ",".join(roles_below_10),
+        },
     )
+
+
+def stratified_train_val_split(
+    examples: list[TrainingExample],
+    validation_split: float,
+    seed: int,
+) -> tuple[list[int], list[int]]:
+    """Return deterministic train/val indices with role-aware validation picks.
+
+    If a role has at least two examples and the validation budget allows it,
+    one example from that role is placed in validation. Remaining validation
+    slots are filled from the shuffled remainder. If the dataset is too small,
+    this falls back to a deterministic shuffled split.
+    """
+    n = len(examples)
+    if n == 0:
+        return [], []
+    n_val = max(int(n * validation_split), 1 if n >= 2 else 0)
+    if n_val == 0:
+        return list(range(n)), []
+    n_val = min(n_val, n - 1) if n > 1 else 0
+    if n_val == 0:
+        return [0], []
+
+    rng = random.Random(seed)
+    by_role: dict[Role, list[int]] = {role: [] for role in Role}
+    for idx, ex in enumerate(examples):
+        by_role[ex.role].append(idx)
+    for indices in by_role.values():
+        rng.shuffle(indices)
+
+    eligible_roles = [role for role in Role if len(by_role[role]) >= 2]
+    if len(eligible_roles) > n_val:
+        all_indices = list(range(n))
+        rng.shuffle(all_indices)
+        val = sorted(all_indices[:n_val])
+        train = sorted(all_indices[n_val:])
+        return train, val
+
+    val_set: set[int] = set()
+    for role in eligible_roles:
+        val_set.add(by_role[role][0])
+
+    remaining = [idx for idx in range(n) if idx not in val_set]
+    rng.shuffle(remaining)
+    for idx in remaining:
+        if len(val_set) >= n_val:
+            break
+        val_set.add(idx)
+
+    train = sorted(idx for idx in range(n) if idx not in val_set)
+    val = sorted(val_set)
+    if not train or not val:
+        all_indices = list(range(n))
+        rng.shuffle(all_indices)
+        val = sorted(all_indices[:n_val])
+        train = sorted(all_indices[n_val:])
+    return train, val
 
 
 def training_examples_to_tensors(
@@ -527,19 +595,28 @@ def train_mlp_role_predictor(
 
     X, y, _gids = training_examples_to_tensors(examples)
     n, n_features = X.shape[0], int(X.shape[1])
+    summary = summarize_training_examples(examples)
+    role_counts = dict(summary.role_counts)
+    missing_roles = [role for role, count in role_counts.items() if count == 0]
+    roles_below_5 = [role for role, count in role_counts.items() if count < 5]
+    dataset_warnings: list[str] = []
+    if n < 50:
+        dataset_warnings.append("n_examples_below_50")
+    if missing_roles:
+        dataset_warnings.append("missing_roles")
+    if roles_below_5:
+        dataset_warnings.append("roles_below_5")
 
     device = _resolve_device(config.device)
 
-    # Shuffle deterministically before splitting
-    perm = torch.randperm(n)
-    X, y = X[perm], y[perm]
-
-    # Compute split sizes; ensure at least 1 val example when n >= 2
-    n_val = max(int(n * config.validation_split), 1 if n >= 2 else 0)
-    n_train = n - n_val
+    train_idx, val_idx = stratified_train_val_split(
+        examples,
+        validation_split=config.validation_split,
+        seed=config.seed,
+    )
     fallback_split = False
 
-    if n_train < 1:
+    if not train_idx:
         # Degenerate: use all data for both splits
         fallback_split = True
         X_train = X_val = X.to(device)
@@ -547,15 +624,29 @@ def train_mlp_role_predictor(
         n_train = n
         n_val = n
     else:
-        X_train = X[:n_train].to(device)
-        y_train = y[:n_train].to(device)
-        if n_val > 0:
-            X_val = X[n_train:].to(device)
-            y_val = y[n_train:].to(device)
+        train_tensor = torch.tensor(train_idx, dtype=torch.long)
+        X_train = X[train_tensor].to(device)
+        y_train = y[train_tensor].to(device)
+        n_train = len(train_idx)
+        if val_idx:
+            val_tensor = torch.tensor(val_idx, dtype=torch.long)
+            X_val = X[val_tensor].to(device)
+            y_val = y[val_tensor].to(device)
+            n_val = len(val_idx)
         else:
             # n == 1: mirror train as val fallback
             fallback_split = True
             X_val, y_val = X_train, y_train
+            n_val = n_train
+
+    train_roles = {INDEX_TO_ROLE[int(i)].value for i in y_train.detach().cpu().tolist()}
+    val_roles = {INDEX_TO_ROLE[int(i)].value for i in y_val.detach().cpu().tolist()}
+    missing_train_classes = [role.value for role in Role if role.value not in train_roles]
+    missing_val_classes = [role.value for role in Role if role.value not in val_roles]
+    if missing_train_classes:
+        dataset_warnings.append("train_split_missing_classes")
+    if missing_val_classes:
+        dataset_warnings.append("val_split_missing_classes")
 
     model = RoleMLP(
         input_dim=n_features,
@@ -584,8 +675,16 @@ def train_mlp_role_predictor(
         metadata={
             "n_train": n_train,
             "n_val": n_val,
+            "n_examples": n,
             "device": device,
             "fallback_split": fallback_split,
+            "split_strategy": "stratified_train_val_split",
+            "role_counts": role_counts,
+            "missing_roles": ",".join(missing_roles),
+            "roles_below_5": ",".join(roles_below_5),
+            "missing_train_classes": ",".join(missing_train_classes),
+            "missing_val_classes": ",".join(missing_val_classes),
+            "dataset_warnings": ",".join(sorted(set(dataset_warnings))),
         },
     )
 

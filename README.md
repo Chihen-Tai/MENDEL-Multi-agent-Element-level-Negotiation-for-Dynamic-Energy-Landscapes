@@ -91,7 +91,8 @@ Requires Python ≥ 3.10 and RDKit.
 | 6 | Negotiation layer | ✓ |
 | 6.5 | Dataset curation / draft label generation | ✓ |
 | 7 | MLP role predictor training | ✓ (needs more curated data) |
-| 8 | MLIP/MACE/Transition1x integration | future |
+| 8 | Benchmark evaluator | ✓ |
+| 8.5 | Dataset normalization + MLP readiness diagnostics | ✓ |
 
 ---
 
@@ -171,6 +172,45 @@ python scripts/train_mlp.py \
 
 See [docs/mlp.md](docs/mlp.md) for the full API reference.
 
+## Benchmarking
+
+Compare the rule-based local predictor against the negotiated rule-based pipeline:
+
+```bash
+python scripts/benchmark.py --data data/reactions.json --rule-based --negotiated
+```
+
+Optionally evaluate an existing MLP checkpoint:
+
+```bash
+python scripts/benchmark.py --data data/reactions.json --mlp-checkpoint models/role_mlp.pt --device cpu
+```
+
+The MLP checkpoint command evaluates both `mlp_local` and `mlp_negotiated`.
+These commands evaluate existing predictors only. They do not train the MLP and do not
+use MLIP, MACE, Transition1x, energies, forces, transition states, or barriers.
+
+See [docs/benchmark.md](docs/benchmark.md) for the Phase 8 metric definitions and
+limitations.
+
+Current benchmark status:
+
+- `rule_based_negotiated` is the best-performing current pipeline.
+- The MLP is implemented and checkpoint-evaluable, but underperforms because the
+  dataset is still small.
+- Do not use the MLP as the default predictor until benchmark results improve.
+
+Normalize and inspect the labeled dataset:
+
+```bash
+python scripts/normalize_dataset.py \
+  --input data/reactions.json \
+  --output data/reactions.normalized.json \
+  --report reports/dataset_quality_report.json
+```
+
+See [docs/dataset_quality.md](docs/dataset_quality.md) for Phase 8.5 guidance.
+
 ---
 
 ## Repository Structure
@@ -188,10 +228,14 @@ mendel/
 │   ├── predictor.py        ← rule-based role predictor
 │   ├── negotiator.py       ← negotiation layer
 │   ├── curation.py         ← draft label generation (Phase 6.5)
-│   └── mlp.py              ← MLP role predictor (Phase 7)
+│   ├── mlp.py              ← MLP role predictor (Phase 7)
+│   ├── benchmark.py        ← benchmark evaluator (Phase 8)
+│   └── dataset_quality.py  ← normalization and diagnostics (Phase 8.5)
 ├── scripts/
 │   ├── draft_labels.py     ← CLI: generate draft labels
-│   └── train_mlp.py        ← CLI: train MLP
+│   ├── train_mlp.py        ← CLI: train MLP
+│   ├── benchmark.py        ← CLI: evaluate predictors
+│   └── normalize_dataset.py ← CLI: normalize/check labels
 ├── data/
 │   ├── reactions.json               ← curated labeled reactions
 │   ├── reactions.minimal.json       ← 2-reaction subset for fast tests

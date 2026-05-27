@@ -121,6 +121,17 @@ def main() -> None:
     print("  Role distribution:")
     for role, count in sorted(summary.role_counts.items()):
         print(f"    {role}: {count}")
+    missing_roles = str(summary.metadata.get("missing_roles", ""))
+    roles_below_10 = str(summary.metadata.get("roles_below_10", ""))
+    if missing_roles:
+        print(f"  Missing roles: {missing_roles}")
+    if roles_below_10:
+        print(f"  Roles below 10 labels: {roles_below_10}")
+    if summary.n_examples < 50:
+        print(
+            "WARNING: Fewer than 50 training examples; MLP results are "
+            "smoke/early-training only and should not replace rule-based defaults."
+        )
 
     if summary.n_examples == 0:
         print("\nNo training examples found. Exiting.")
@@ -146,6 +157,9 @@ def main() -> None:
     print(f"  Final train loss:   {train_loss_final:.4f}")
     print(f"  Final val loss:     {val_loss_final:.4f}")
     print(f"  Final val accuracy: {val_acc_final:.4f}")
+    dataset_warnings = str(history.metadata.get("dataset_warnings", ""))
+    if dataset_warnings:
+        print(f"  Dataset warnings:    {dataset_warnings}")
 
     predictor.save(args.output)
     print(f"\nCheckpoint saved to {args.output}")

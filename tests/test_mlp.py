@@ -26,6 +26,8 @@ from mendel.mlp import (
     TrainingHistory,
     build_training_examples,
     evaluate_mlp_predictor,
+    stratified_train_val_split,
+    summarize_training_examples,
     train_mlp_role_predictor,
     training_examples_to_tensors,
 )
@@ -123,6 +125,25 @@ def test_training_example_to_dict(minimal_examples) -> None:
     assert isinstance(d["features"], list)
 
 
+def test_training_summary_contains_imbalance_metadata(minimal_examples) -> None:
+    summary = summarize_training_examples(minimal_examples)
+    metadata = summary.metadata
+    assert "min_role_count" in metadata
+    assert "max_role_count" in metadata
+    assert "missing_roles" in metadata
+    assert "roles_below_10" in metadata
+
+
+def test_stratified_split_returns_disjoint_indices(minimal_examples) -> None:
+    train_idx, val_idx = stratified_train_val_split(
+        minimal_examples,
+        validation_split=0.5,
+        seed=0,
+    )
+    assert set(train_idx).isdisjoint(set(val_idx))
+    assert sorted(train_idx + val_idx) == list(range(len(minimal_examples)))
+
+
 # ---------------------------------------------------------------------------
 # 4. Tensor conversion
 # ---------------------------------------------------------------------------
@@ -181,6 +202,14 @@ def test_training_history_to_dict(tiny_predictor_and_history) -> None:
     assert "train_loss" in d
     assert "val_loss" in d
     assert isinstance(d["train_loss"], list)
+
+
+def test_training_history_records_dataset_warnings(tiny_predictor_and_history) -> None:
+    _, history = tiny_predictor_and_history
+    metadata = history.metadata
+    assert "dataset_warnings" in metadata
+    assert "role_counts" in metadata
+    assert metadata["n_examples"] > 0
 
 
 # ---------------------------------------------------------------------------

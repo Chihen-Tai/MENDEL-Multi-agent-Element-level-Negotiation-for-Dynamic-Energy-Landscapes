@@ -98,6 +98,26 @@ entry point.
 This is **Phase 7** and is paused/future for the current freeze. It trains role
 classification only. MLIP, energy/force prediction, and Transition1x are out of scope.
 
+## Phase 8: Benchmark Evaluator — [docs/benchmark.md](benchmark.md)
+
+`mendel/benchmark.py` compares the rule-based local predictor, the negotiated
+rule-based pipeline, and optional MLP checkpoints against curated
+`LabeledReaction.group_roles`. Phase 8 validates whether the MLP improves over
+rules and whether negotiation improves reaction-level consistency.
+
+This phase is evaluation only. It does not train, does not introduce MLIP/MACE,
+and does not measure energy, forces, transition states, or barriers.
+
+## Phase 8.5: Dataset Quality and MLP Readiness — [docs/dataset_quality.md](dataset_quality.md)
+
+`mendel/dataset_quality.py` normalizes mechanism labels, reports label quality
+issues, and surfaces MLP training-data risks such as low role counts and draft
+labels. It exists because Phase 8 showed `rule_based_negotiated` remains the
+best current pipeline while the MLP is data-limited.
+
+This phase improves data readiness only. It does not change role taxonomy,
+functional-group taxonomy, model architecture, or the rule-based default.
+
 ---
 
 ## Phase 6: Negotiation Layer — [docs/negotiator.md](negotiator.md)
@@ -184,4 +204,5 @@ No chemistry parsing, SMARTS matching, or ML is included in Phase 0.
 | 6 | Negotiation / conflict resolution |
 | 6.5 | Dataset curation / draft label generation |
 | 7 | MLP role predictor (paused — needs curated data) |
-| 8 | MLIP wrapper + benchmarking + visualization |
+| 8 | Benchmark evaluator |
+| 8.5 | Dataset normalization and MLP readiness diagnostics |

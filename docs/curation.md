@@ -33,6 +33,23 @@ Phase 6.5 bridges the rule-based pipeline (Phases 0–6) and the MLP training ph
 
 ## Commands
 
+Generate local template-based auto candidates:
+
+```bash
+python scripts/generate_candidate_reactions.py \
+  --output data/draft_inputs.auto_candidates.json
+```
+
+Run draft labeling and conservative review-queue filtering:
+
+```bash
+python scripts/auto_draft_and_filter.py \
+  --input data/draft_inputs.auto_candidates.json
+```
+
+This creates draft labels only. Manual review is required before merging any
+record into `data/reactions.json`.
+
 Generate core benchmark draft labels (5 reactions):
 
 ```bash

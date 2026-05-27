@@ -146,7 +146,7 @@ from mendel.mlp import (
 ## Known Limitations
 
 **Small dataset** — The labeled dataset in `data/reactions.json` contains only
-8 reactions (~20 labeled groups).  The MLP is almost certainly overfitting and
+26 reactions (48 labeled groups).  The MLP is still data-limited and
 should not be used in production until more labeled data is available.
 
 **Experimental status** — The MLP supplements but does not replace the
@@ -167,11 +167,9 @@ dataset, not on any DFT trajectory dataset.
 
 ---
 
-## What Phase 8 Should Implement Next
+## Phase 8/8.5 Follow-up
 
-- MLIP wrapper (`mendel/mlip.py`) integrating MACE for energy and force
-  prediction.
-- 3D structure visualization (`py3Dmol`).
-- Full benchmark harness comparing rule-based + MLP + MLIP predictions against
-  `BENCHMARK.md` targets.
-- Streamlit or Gradio demo app.
+Phase 8 benchmarks rule-based, negotiated, and optional MLP checkpoint predictors.
+Phase 8.5 normalizes dataset labels and reports training-readiness diagnostics.
+Neither phase adds MLIP, MACE, Transition1x, energy, force, transition-state, or
+barrier prediction.

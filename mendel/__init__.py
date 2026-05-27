@@ -69,6 +69,20 @@ _EXPORT_MODULES: dict[str, str] = {
     "negotiate_predictions": "mendel.negotiator",
     "run_full_rule_pipeline": "mendel.negotiator",
     "summarize_negotiation_result": "mendel.negotiator",
+    # Phase 8 benchmark (no torch required for these exports)
+    "BenchmarkReport": "mendel.benchmark",
+    "GroupBenchmarkRecord": "mendel.benchmark",
+    "ReactionBenchmarkRecord": "mendel.benchmark",
+    "compare_benchmark_reports": "mendel.benchmark",
+    "evaluate_negotiated_rule_based": "mendel.benchmark",
+    "evaluate_rule_based_predictor": "mendel.benchmark",
+    # Phase 8.5 dataset quality (no torch required)
+    "DatasetQualityIssue": "mendel.dataset_quality",
+    "DatasetQualityReport": "mendel.dataset_quality",
+    "build_dataset_quality_report": "mendel.dataset_quality",
+    "canonicalize_mechanism_type": "mendel.dataset_quality",
+    "normalize_labeled_dataset": "mendel.dataset_quality",
+    "normalize_labeled_reaction": "mendel.dataset_quality",
 }
 
 __all__ = ["__version__", *_EXPORT_MODULES]
