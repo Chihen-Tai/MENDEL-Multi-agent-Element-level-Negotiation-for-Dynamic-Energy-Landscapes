@@ -347,10 +347,10 @@ def test_ani2x_supported_elements_constant() -> None:
 
 
 def test_optional_import_torchani_missing_gives_clear_error() -> None:
-    import importlib
     import sys
 
-    saved = sys.modules.pop("torchani", None)
+    saved = sys.modules.get("torchani")
+    sys.modules["torchani"] = None  # type: ignore[assignment]  # sentinel → ImportError
     try:
         with pytest.raises(ImportError, match="torchani is required"):
             optional_import_torchani()
@@ -358,7 +358,7 @@ def test_optional_import_torchani_missing_gives_clear_error() -> None:
         if saved is not None:
             sys.modules["torchani"] = saved
         else:
-            importlib.invalidate_caches()
+            del sys.modules["torchani"]
 
 
 def test_diagnose_ani2x_safe_without_torchani() -> None:
