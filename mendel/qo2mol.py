@@ -7,10 +7,16 @@ files into MENDELV reference energy/force records.
 from __future__ import annotations
 
 import json
+import random
 from dataclasses import dataclass, field
 from datetime import UTC, datetime
 from pathlib import Path
 from typing import Any
+
+_ATOMIC_SYMBOL: dict[int, str] = {
+    1: "H", 6: "C", 7: "N", 8: "O", 9: "F",
+    15: "P", 16: "S", 17: "Cl", 35: "Br", 53: "I",
+}
 
 from mendel.reference_data import ReferenceStructureRecord, save_reference_records_json
 
@@ -72,8 +78,39 @@ def inspect_qo2mol_path(path: str | Path) -> dict[str, object]:
         "is_dir": target.is_dir(),
         "size_bytes": target.stat().st_size if target.exists() and target.is_file() else None,
         "detected_format": detected,
-        "supported_for_loading": detected in {"json", "jsonl", "npz"},
+        "supported_for_loading": detected in {"json", "jsonl", "npz", "pkl"},
     }
+
+
+def _iter_pkl_records(path: Path, max_records: int, seed: int) -> list[dict[str, Any]]:
+    import pickle
+
+    with path.open("rb") as fh:
+        all_data: list[dict[str, Any]] = pickle.load(fh)  # noqa: S301
+
+    rng = random.Random(seed)
+    sample = rng.sample(all_data, min(max_records, len(all_data)))
+
+    records: list[dict[str, Any]] = []
+    for item in sample:
+        elements: list[int] = item["elements"]
+        coords: list[list[float]] = item["coordinates"]
+        forces: list[list[float]] = item["forces"]
+        symbols = [_ATOMIC_SYMBOL.get(z, f"X{z}") for z in elements]
+        xyz = [[sym, *pos] for sym, pos in zip(symbols, coords, strict=True)]
+        records.append({
+            "structure_id": str(item.get("confid", f"qo2mol_pkl_{len(records)}")),
+            "molecule_id": str(item.get("inchikey", "")),
+            "xyz": xyz,
+            "energy": float(item["energy"]),
+            "reference_energy_unit": "eV",
+            "forces": [[float(v) for v in f] for f in forces],
+            "reference_force_unit": "eV/Angstrom",
+            "charge": int(item.get("net_charge", 0)),
+            "smiles": None,
+            "split": "ood",
+        })
+    return records
 
 
 def _iter_json_records(path: Path) -> list[dict[str, Any]]:
@@ -176,7 +213,6 @@ def load_qo2mol_sample(
     max_records: int = 100,
     seed: int = 42,
 ) -> list[ReferenceStructureRecord]:
-    del seed
     target = Path(path)
     summary = inspect_qo2mol_path(target)
     fmt = summary["detected_format"]
@@ -186,10 +222,12 @@ def load_qo2mol_sample(
         raw_records = _iter_jsonl_records(target, max_records)
     elif fmt == "npz":
         raw_records = _iter_npz_records(target, max_records)
+    elif fmt == "pkl":
+        raw_records = _iter_pkl_records(target, max_records, seed)
     else:
         raise ValueError(
             "QO2Mol format adapter not implemented for this file type. "
-            "Provide JSON/NPZ sample or extend adapter."
+            "Provide JSON/NPZ/PKL sample or extend adapter."
         )
 
     records: list[ReferenceStructureRecord] = []

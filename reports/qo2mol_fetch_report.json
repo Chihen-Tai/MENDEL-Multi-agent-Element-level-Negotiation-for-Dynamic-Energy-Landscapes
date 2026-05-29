@@ -2,7 +2,7 @@
   "dataset_name": "QO2Mol",
   "source_url": "https://github.com/saiscn/QO2Mol/",
   "repo_url": "https://github.com/saiscn/QO2Mol/",
-  "access_date": "2026-05-28T14:17:02.746205+00:00",
+  "access_date": "2026-05-29T05:54:34.026985+00:00",
   "output_dir": "data/external/qo2mol_sample",
   "max_size_mb": 200.0,
   "download_allowed": false,

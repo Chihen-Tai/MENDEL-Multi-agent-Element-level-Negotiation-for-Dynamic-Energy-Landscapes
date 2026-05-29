@@ -133,6 +133,41 @@ Script: `scripts/finetune_ani2x_multimol.py`
 
 ---
 
+---
+
+## Phase 10 QO2Mol OOD Benchmark
+
+### 設定
+
+- **Reference data**: QO2Mol v1.3 OOD set，100 conformers（隨機抽樣），B3LYP/def2-SVP
+- **元素覆蓋**: C, H, N, O, F, P, S, Cl（QO2Mol 包含 P/Br/I，ANI-2x 不支援）
+- **Script**: `scripts/run_mlip_reference_benchmark.py`
+
+### Force 誤差結果（eV/Å）
+
+| 指標 | MACE-OFF-small | ANI-2x |
+|------|---------------|--------|
+| 成功筆數 / 100 | 100 | 71（29 筆含不支援元素） |
+| Force MAE | 0.257 | 0.196 |
+| Force RMSE | 0.355 | 0.311 |
+| Energy MAE (eV) | 26.87 | 9.46 |
+| Per-element RMSE: C | 0.305 | 0.295 |
+| Per-element RMSE: H | 0.280 | 0.281 |
+| Per-element RMSE: N | 0.400 | 0.450 |
+| Per-element RMSE: O | 0.631 | 0.399 |
+| Per-element RMSE: P | 0.669 | N/A（不支援）|
+| Per-element RMSE: S | 0.875 | 1.035 |
+
+### 關鍵發現
+
+- **ANI-2x 力精度仍勝出**（~12% RMSE 改善），與 rMD17 乙醇結果一致。能量精度大幅領先（9.46 vs 26.87 eV MAE），因 B3LYP/def2-SVP 與 CCSD(T)/CBS 訓練資料性質相近。
+- **重元素弱點明確**：S 對兩個模型都差（MACE 0.875, ANI-2x 1.035 eV/Å），P 只有 MACE 支援但 RMSE 達 0.669。QO2Mol 的 P/S 多樣性超出兩個模型的訓練分布。
+- **MENDEL 診斷假設延伸**：QO2Mol 中，含 P/S 的 functional group 預期是最高誤差 site，與 rMD17 reactive site 結論一致。
+
+圖：`reports/figures/` 暫無（可用 `scripts/compare_mace_ani2x.py` 產生）
+
+---
+
 ## 產生的檔案
 
 | 檔案 | 內容 |
@@ -149,3 +184,7 @@ Script: `scripts/finetune_ani2x_multimol.py`
 | `reports/finetune_ani2x_multimol_uniform.json` | Route B uniform 對照組報告 |
 | `models/ani2x_multimol_mendel.pt` | ANI-2x fine-tuned，reactive ×3 |
 | `models/ani2x_multimol_uniform.pt` | ANI-2x fine-tuned，uniform |
+| `data/reference/qo2mol_sample.reference.json` | QO2Mol OOD 100 conformers（ReferenceStructureRecord 格式）|
+| `reports/mlip_qo2mol_mace_benchmark.json` | MACE-OFF-small QO2Mol benchmark |
+| `reports/mlip_qo2mol_ani2x_benchmark.json` | ANI-2x QO2Mol benchmark |
+| `reports/qo2mol_ingestion_report.json` | QO2Mol pkl ingestion 報告 |
