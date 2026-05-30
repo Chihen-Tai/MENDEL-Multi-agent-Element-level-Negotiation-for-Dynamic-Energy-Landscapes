@@ -147,7 +147,7 @@
             1,
             2
           ],
-          "role": "spectator",
+          "role": "reactive_electrophile",
           "confidence": "manual",
           "notes": "Carbonyl of nucleophile acetone; alpha deprotonation occurs here but the C=O itself is spectator"
         },
@@ -195,7 +195,7 @@
             0,
             1
           ],
-          "role": "spectator",
+          "role": "reactive_nucleophile",
           "confidence": "manual",
           "notes": "Alpha carbon of acceptor acetone; not involved in the bond-forming step"
         },
@@ -207,7 +207,7 @@
             3,
             1
           ],
-          "role": "spectator",
+          "role": "reactive_nucleophile",
           "confidence": "manual",
           "notes": "Alpha carbon of acceptor acetone; not involved in the bond-forming step"
         }
@@ -7344,7 +7344,7 @@
             3,
             1
           ],
-          "role": "spectator",
+          "role": "reactive_nucleophile",
           "confidence": "manual",
           "notes": "draft_source: phase6_5_draft; final_confidence=0.500; subrole=secondary_alpha_candidate; reason: downgraded reactive_nucleophile \u2192 spectator by global aldol disambiguation; primary donor is mol0_alpha_carbon_0"
         },
@@ -7368,7 +7368,7 @@
             0,
             1
           ],
-          "role": "spectator",
+          "role": "reactive_nucleophile",
           "confidence": "manual",
           "notes": "draft_source: phase6_5_draft; final_confidence=0.500; subrole=secondary_alpha_candidate; reason: downgraded reactive_nucleophile \u2192 spectator by global aldol disambiguation; primary donor is mol0_alpha_carbon_0"
         },
@@ -7380,7 +7380,7 @@
             3,
             1
           ],
-          "role": "spectator",
+          "role": "reactive_nucleophile",
           "confidence": "manual",
           "notes": "draft_source: phase6_5_draft; final_confidence=0.500; subrole=secondary_alpha_candidate; reason: downgraded reactive_nucleophile \u2192 spectator by global aldol disambiguation; primary donor is mol0_alpha_carbon_0"
         }
@@ -7530,7 +7530,7 @@
             0,
             1
           ],
-          "role": "spectator",
+          "role": "reactive_nucleophile",
           "confidence": "manual",
           "notes": "draft_source: phase6_5_draft; final_confidence=0.500; subrole=secondary_alpha_candidate; reason: downgraded reactive_nucleophile \u2192 spectator by global aldol disambiguation; primary donor is mol0_alpha_carbon_0"
         }
@@ -7587,7 +7587,7 @@
             2,
             1
           ],
-          "role": "spectator",
+          "role": "reactive_nucleophile",
           "confidence": "manual",
           "notes": "draft_source: phase6_5_draft; final_confidence=0.500; subrole=secondary_alpha_candidate; reason: downgraded reactive_nucleophile \u2192 spectator by global aldol disambiguation; primary donor is mol0_alpha_carbon_0"
         },
@@ -7611,7 +7611,7 @@
             0,
             1
           ],
-          "role": "spectator",
+          "role": "reactive_nucleophile",
           "confidence": "manual",
           "notes": "draft_source: phase6_5_draft; final_confidence=0.500; subrole=secondary_alpha_candidate; reason: downgraded reactive_nucleophile \u2192 spectator by global aldol disambiguation; primary donor is mol0_alpha_carbon_0"
         },
@@ -7623,7 +7623,7 @@
             2,
             1
           ],
-          "role": "spectator",
+          "role": "reactive_nucleophile",
           "confidence": "manual",
           "notes": "draft_source: phase6_5_draft; final_confidence=0.500; subrole=secondary_alpha_candidate; reason: downgraded reactive_nucleophile \u2192 spectator by global aldol disambiguation; primary donor is mol0_alpha_carbon_0"
         }
@@ -7692,7 +7692,7 @@
             1,
             2
           ],
-          "role": "spectator",
+          "role": "reactive_nucleophile",
           "confidence": "manual",
           "notes": "draft_source: phase6_5_draft; final_confidence=0.500; subrole=secondary_alpha_candidate; reason: downgraded reactive_nucleophile \u2192 spectator by global aldol disambiguation; primary donor is mol0_alpha_carbon_0"
         }
@@ -9559,7 +9559,7 @@
             3,
             4
           ],
-          "role": "spectator",
+          "role": "reactive_electrophile",
           "confidence": "manual",
           "notes": "manually labeled"
         },

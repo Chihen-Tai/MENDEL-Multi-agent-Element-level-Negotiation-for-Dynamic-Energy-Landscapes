@@ -10,6 +10,7 @@ chemically plausible reaction-level assignment.
 
 from __future__ import annotations
 
+import re
 from dataclasses import dataclass, field
 from pathlib import Path
 from typing import Any
@@ -371,7 +372,13 @@ class RuleBasedNegotiator:
         elif mechanism_hint == "sn2_or_e2_like":
             self._negotiate_sn2_e2(groups, predictions, assign_by_id, warnings)
         elif mechanism_hint == "aldol_like":
-            self._negotiate_aldol(groups, predictions, assign_by_id, warnings)
+            self._negotiate_aldol(
+                groups,
+                predictions,
+                assign_by_id,
+                warnings,
+                symmetric_self=self._is_symmetric_self_reaction(parsed_reaction),
+            )
         elif mechanism_hint == "diels_alder_like":
             self._negotiate_diels_alder(groups, predictions, assign_by_id, warnings)
         elif mechanism_hint == "radical_bromination_like":
@@ -521,6 +528,7 @@ class RuleBasedNegotiator:
                 assign_by_id,
                 warnings,
                 confidence_aware=True,
+                symmetric_self=self._is_symmetric_self_reaction(parsed_reaction),
             )
             return "aldol_like"
         if mechanism in {"diels_alder", "diels_alder_like"}:
@@ -696,6 +704,19 @@ class RuleBasedNegotiator:
                 {"mechanism": "e2"},
             ))
 
+    @staticmethod
+    def _is_symmetric_self_reaction(parsed_reaction: ParsedReaction) -> bool:
+        """True when two or more reactant molecules are identical.
+
+        For such self-reactions (e.g. acetone + acetone aldol) the donor/acceptor
+        assignment is not determinable from the reactant features, so the helpers
+        must not impose an asymmetric single-donor convention.
+        """
+        normalized = [
+            re.sub(r":\d+", "", mol.smiles) for mol in parsed_reaction.reactants
+        ]
+        return len(normalized) >= 2 and len(set(normalized)) < len(normalized)
+
     def _negotiate_aldol(
         self,
         groups: list[FunctionalGroup],
@@ -704,6 +725,7 @@ class RuleBasedNegotiator:
         warnings: list[NegotiationWarning],
         *,
         confidence_aware: bool = False,
+        symmetric_self: bool = False,
     ) -> None:
         """Aldol-like: select primary donor alpha_carbon and acceptor carbonyl.
 
@@ -782,8 +804,14 @@ class RuleBasedNegotiator:
                 f"confidence={primary_acceptor.confidence:.2f}); {a.reason}"
             )
 
-        # Downgrade non-selected alpha_carbons if configured
-        if cfg.allow_role_downgrade_to_spectator and primary_donor is not None:
+        # Downgrade non-selected alpha_carbons if configured. Skipped for
+        # symmetric self-reactions, where every alpha_carbon is an equally valid
+        # donor and forcing a single one would contradict the symmetric labels.
+        if (
+            cfg.allow_role_downgrade_to_spectator
+            and primary_donor is not None
+            and not symmetric_self
+        ):
             for pred in alpha_preds:
                 if pred.group_id == primary_donor.group_id:
                     continue

@@ -33,7 +33,7 @@ PYTHONDONTWRITEBYTECODE=1 pytest -q -p no:cacheprovider \
   tests/test_labels.py tests/test_predictor.py tests/test_negotiator.py
 ```
 
-**Phase 7 checkpoint.** `models/role_mlp.pt` — 65-dim input, hidden_dim=64, 166 reactions across 14 mechanism classes, mechanism-stratified reaction-level split. MLP-only benchmark: **90.7% overall**. MLP+Negotiate benchmark: **96.1% overall**, michael_addition 100%, diels_alder 97.6%, cross_aldol 85.7%, aldol 78.7% (weakest class). `tests/test_mlp.py` and `tests/test_mlp_aware_negotiation.py` are part of the normal test suite.
+**Phase 7 checkpoint.** `models/role_mlp.pt` — 65-dim input, hidden_dim=64, 166 reactions across 14 mechanism classes, mechanism-stratified reaction-level split. MLP-only benchmark: **94.3% overall**. MLP+Negotiate benchmark: **97.4% overall**, michael_addition 100%, diels_alder 100%, cross_aldol 85.7%, aldol 85.1% (weakest class; 6 symmetric self-aldols relabeled to a symmetric carbonyl→electrophile / α-carbon→nucleophile convention, with a negotiator symmetry guard exempting them from donor/acceptor downgrade). `tests/test_mlp.py` and `tests/test_mlp_aware_negotiation.py` are part of the normal test suite.
 
 **Do not run `tests/test_mlip.py`, `tests/test_mlip_env_scripts.py`, `tests/test_mlip_geometry_sanity.py`, or `tests/test_mlip_reference_benchmark.py` without Phase 9 deps installed.**
 
@@ -79,7 +79,7 @@ result = run_pipeline_with_mlp("CCBr.[OH-]>>CCO.[Br-]", "models/role_mlp.pt", co
 | 0–6 | Implemented | `rdkit`, stdlib only |
 | 6.5 — Dataset curation / label drafting | **Complete** — 140 reactions, 299 examples; 8 aldol + 7 D-A added; descriptor limit confirmed | `rdkit`, stdlib only |
 | 6.6 — Descriptor upgrade (inter-molecular context) | **Complete** — schema `phase6_6_v1`, 55→65 dim; Category F adds `partner_*`, `rel_*`, `n_reactant_mols`, `same_mol_has_alpha_carbon` | `rdkit`, stdlib only |
-| 7 — MLP role predictor training | **Updated** — `models/role_mlp.pt`, 65-dim, hidden_dim=64, 166 reactions; MLP+Negotiate **96.1% overall** | `torch>=2.0` |
+| 7 — MLP role predictor training | **Updated** — `models/role_mlp.pt`, 65-dim, hidden_dim=64, 166 reactions; MLP+Negotiate **97.4% overall** | `torch>=2.0` |
 | 8 — Benchmark, center head, dataset ops | **Updated** — center_head retrained on 65-dim, atom F1=0.912, rxn-center F1=0.935 | `rdkit`, stdlib only |
 | 9 — MLIP single-point backend | **Concluded** — MACE/ANI-2x backends working; Route B reactive-weighted fine-tuning investigated on rMD17 (works) and QO2Mol (ineffective — lacks per-group systematic error). Design boundary confirmed. | `mace-torch`, `ase` |
 | 10 — Reference energy/force data (MD17, QO2Mol) | **QO2Mol OOD benchmarked** — pkl ingestion complete, MACE/ANI-2x benchmarks run, Route B boundary confirmed | stdlib only (no MLIP for ingestion) |

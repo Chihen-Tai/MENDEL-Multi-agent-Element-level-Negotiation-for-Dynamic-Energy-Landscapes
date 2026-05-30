@@ -2,8 +2,8 @@
   "aldol": {
     "n_reactions_heldout": 12,
     "n_groups_heldout": 47,
-    "lomo_accuracy": 0.6170212765957447,
-    "indist_mlp_local": 0.6382978723404256
+    "lomo_accuracy": 0.8723404255319149,
+    "indist_mlp_local": 0.8936170212765957
   },
   "benzylic_radical_bromination": {
     "n_reactions_heldout": 13,
@@ -33,7 +33,7 @@
     "n_reactions_heldout": 22,
     "n_groups_heldout": 83,
     "lomo_accuracy": 0.37349397590361444,
-    "indist_mlp_local": 0.9036144578313253
+    "indist_mlp_local": 0.927710843373494
   },
   "e2": {
     "n_reactions_heldout": 16,
@@ -56,7 +56,7 @@
   "michael_addition": {
     "n_reactions_heldout": 12,
     "n_groups_heldout": 48,
-    "lomo_accuracy": 0.7083333333333334,
+    "lomo_accuracy": 0.4791666666666667,
     "indist_mlp_local": 0.8541666666666666
   },
   "nitrile_control": {
@@ -80,7 +80,7 @@
   "sn2": {
     "n_reactions_heldout": 21,
     "n_groups_heldout": 25,
-    "lomo_accuracy": 0.92,
+    "lomo_accuracy": 1.0,
     "indist_mlp_local": 1.0
   }
 }

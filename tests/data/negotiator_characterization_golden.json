@@ -348,11 +348,11 @@
           "subrole": "aldol_donor_alpha_carbon"
         },
         {
-          "final_role": "spectator",
+          "final_role": "reactive_nucleophile",
           "group_id": "mol0_alpha_carbon_1",
           "is_reaction_center": false,
           "raw_role": "reactive_nucleophile",
-          "subrole": "secondary_alpha_candidate"
+          "subrole": null
         },
         {
           "final_role": "reactive_electrophile",
@@ -362,18 +362,18 @@
           "subrole": null
         },
         {
-          "final_role": "spectator",
+          "final_role": "reactive_nucleophile",
           "group_id": "mol1_alpha_carbon_0",
           "is_reaction_center": false,
           "raw_role": "reactive_nucleophile",
-          "subrole": "secondary_alpha_candidate"
+          "subrole": null
         },
         {
-          "final_role": "spectator",
+          "final_role": "reactive_nucleophile",
           "group_id": "mol1_alpha_carbon_1",
           "is_reaction_center": false,
           "raw_role": "reactive_nucleophile",
-          "subrole": "secondary_alpha_candidate"
+          "subrole": null
         }
       ],
       "center_group_ids": [
@@ -403,11 +403,11 @@
           "subrole": "aldol_donor_alpha_carbon"
         },
         {
-          "final_role": "spectator",
+          "final_role": "reactive_nucleophile",
           "group_id": "mol0_alpha_carbon_1",
           "is_reaction_center": false,
           "raw_role": "reactive_nucleophile",
-          "subrole": "secondary_alpha_candidate"
+          "subrole": null
         },
         {
           "final_role": "reactive_electrophile",
@@ -417,18 +417,18 @@
           "subrole": null
         },
         {
-          "final_role": "spectator",
+          "final_role": "reactive_nucleophile",
           "group_id": "mol1_alpha_carbon_0",
           "is_reaction_center": false,
           "raw_role": "reactive_nucleophile",
-          "subrole": "secondary_alpha_candidate"
+          "subrole": null
         },
         {
-          "final_role": "spectator",
+          "final_role": "reactive_nucleophile",
           "group_id": "mol1_alpha_carbon_1",
           "is_reaction_center": false,
           "raw_role": "reactive_nucleophile",
-          "subrole": "secondary_alpha_candidate"
+          "subrole": null
         }
       ],
       "center_group_ids": [
@@ -563,11 +563,11 @@
           "subrole": null
         },
         {
-          "final_role": "spectator",
+          "final_role": "reactive_nucleophile",
           "group_id": "mol1_alpha_carbon_0",
           "is_reaction_center": false,
           "raw_role": "reactive_nucleophile",
-          "subrole": "secondary_alpha_candidate"
+          "subrole": null
         }
       ],
       "center_group_ids": [
@@ -604,11 +604,11 @@
           "subrole": null
         },
         {
-          "final_role": "spectator",
+          "final_role": "reactive_nucleophile",
           "group_id": "mol1_alpha_carbon_0",
           "is_reaction_center": false,
           "raw_role": "reactive_nucleophile",
-          "subrole": "secondary_alpha_candidate"
+          "subrole": null
         }
       ],
       "center_group_ids": [
@@ -729,11 +729,11 @@
           "subrole": null
         },
         {
-          "final_role": "spectator",
+          "final_role": "reactive_nucleophile",
           "group_id": "mol1_alpha_carbon_0",
           "is_reaction_center": false,
           "raw_role": "reactive_nucleophile",
-          "subrole": "secondary_alpha_candidate"
+          "subrole": null
         }
       ],
       "center_group_ids": [
@@ -770,11 +770,11 @@
           "subrole": null
         },
         {
-          "final_role": "spectator",
+          "final_role": "reactive_nucleophile",
           "group_id": "mol1_alpha_carbon_0",
           "is_reaction_center": false,
           "raw_role": "reactive_nucleophile",
-          "subrole": "secondary_alpha_candidate"
+          "subrole": null
         }
       ],
       "center_group_ids": [
@@ -805,11 +805,11 @@
           "subrole": "aldol_donor_alpha_carbon"
         },
         {
-          "final_role": "spectator",
+          "final_role": "reactive_nucleophile",
           "group_id": "mol0_alpha_carbon_1",
           "is_reaction_center": false,
           "raw_role": "reactive_nucleophile",
-          "subrole": "secondary_alpha_candidate"
+          "subrole": null
         },
         {
           "final_role": "reactive_electrophile",
@@ -819,18 +819,18 @@
           "subrole": null
         },
         {
-          "final_role": "spectator",
+          "final_role": "reactive_nucleophile",
           "group_id": "mol1_alpha_carbon_0",
           "is_reaction_center": false,
           "raw_role": "reactive_nucleophile",
-          "subrole": "secondary_alpha_candidate"
+          "subrole": null
         },
         {
-          "final_role": "spectator",
+          "final_role": "reactive_nucleophile",
           "group_id": "mol1_alpha_carbon_1",
           "is_reaction_center": false,
           "raw_role": "reactive_nucleophile",
-          "subrole": "secondary_alpha_candidate"
+          "subrole": null
         }
       ],
       "center_group_ids": [
@@ -860,11 +860,11 @@
           "subrole": "aldol_donor_alpha_carbon"
         },
         {
-          "final_role": "spectator",
+          "final_role": "reactive_nucleophile",
           "group_id": "mol0_alpha_carbon_1",
           "is_reaction_center": false,
           "raw_role": "reactive_nucleophile",
-          "subrole": "secondary_alpha_candidate"
+          "subrole": null
         },
         {
           "final_role": "reactive_electrophile",
@@ -874,18 +874,18 @@
           "subrole": null
         },
         {
-          "final_role": "spectator",
+          "final_role": "reactive_nucleophile",
           "group_id": "mol1_alpha_carbon_0",
           "is_reaction_center": false,
           "raw_role": "reactive_nucleophile",
-          "subrole": "secondary_alpha_candidate"
+          "subrole": null
         },
         {
-          "final_role": "spectator",
+          "final_role": "reactive_nucleophile",
           "group_id": "mol1_alpha_carbon_1",
           "is_reaction_center": false,
           "raw_role": "reactive_nucleophile",
-          "subrole": "secondary_alpha_candidate"
+          "subrole": null
         }
       ],
       "center_group_ids": [
@@ -923,11 +923,11 @@
           "subrole": null
         },
         {
-          "final_role": "spectator",
+          "final_role": "reactive_nucleophile",
           "group_id": "mol1_alpha_carbon_0",
           "is_reaction_center": false,
           "raw_role": "reactive_nucleophile",
-          "subrole": "secondary_alpha_candidate"
+          "subrole": null
         }
       ],
       "center_group_ids": [
@@ -964,11 +964,11 @@
           "subrole": null
         },
         {
-          "final_role": "spectator",
+          "final_role": "reactive_nucleophile",
           "group_id": "mol1_alpha_carbon_0",
           "is_reaction_center": false,
           "raw_role": "reactive_nucleophile",
-          "subrole": "secondary_alpha_candidate"
+          "subrole": null
         }
       ],
       "center_group_ids": [
@@ -3551,11 +3551,11 @@
           "subrole": "aldol_donor_alpha_carbon"
         },
         {
-          "final_role": "spectator",
+          "final_role": "reactive_nucleophile",
           "group_id": "mol0_alpha_carbon_1",
           "is_reaction_center": false,
           "raw_role": "reactive_nucleophile",
-          "subrole": "secondary_alpha_candidate"
+          "subrole": null
         },
         {
           "final_role": "reactive_electrophile",
@@ -3565,18 +3565,18 @@
           "subrole": null
         },
         {
-          "final_role": "spectator",
+          "final_role": "reactive_nucleophile",
           "group_id": "mol1_alpha_carbon_0",
           "is_reaction_center": false,
           "raw_role": "reactive_nucleophile",
-          "subrole": "secondary_alpha_candidate"
+          "subrole": null
         },
         {
-          "final_role": "spectator",
+          "final_role": "reactive_nucleophile",
           "group_id": "mol1_alpha_carbon_1",
           "is_reaction_center": false,
           "raw_role": "reactive_nucleophile",
-          "subrole": "secondary_alpha_candidate"
+          "subrole": null
         }
       ],
       "center_group_ids": [
@@ -3606,11 +3606,11 @@
           "subrole": "aldol_donor_alpha_carbon"
         },
         {
-          "final_role": "spectator",
+          "final_role": "reactive_nucleophile",
           "group_id": "mol0_alpha_carbon_1",
           "is_reaction_center": false,
           "raw_role": "reactive_nucleophile",
-          "subrole": "secondary_alpha_candidate"
+          "subrole": null
         },
         {
           "final_role": "reactive_electrophile",
@@ -3620,18 +3620,18 @@
           "subrole": null
         },
         {
-          "final_role": "spectator",
+          "final_role": "reactive_nucleophile",
           "group_id": "mol1_alpha_carbon_0",
           "is_reaction_center": false,
           "raw_role": "reactive_nucleophile",
-          "subrole": "secondary_alpha_candidate"
+          "subrole": null
         },
         {
-          "final_role": "spectator",
+          "final_role": "reactive_nucleophile",
           "group_id": "mol1_alpha_carbon_1",
           "is_reaction_center": false,
           "raw_role": "reactive_nucleophile",
-          "subrole": "secondary_alpha_candidate"
+          "subrole": null
         }
       ],
       "center_group_ids": [

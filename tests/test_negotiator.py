@@ -130,8 +130,11 @@ def test_aldol_reaction_center_atoms_nonempty() -> None:
 
 
 def test_aldol_not_all_alpha_carbons_remain_nucleophile() -> None:
+    # Asymmetric aldol (acetone + propanal): donor/acceptor disambiguation must
+    # fire. Self-aldols are symmetric and intentionally exempt — both alpha
+    # carbons stay nucleophile there.
     result = _run(
-        "CC(=O)C.CC(=O)C>>CC(=O)CC(O)(C)C", ReactionContext.ionic
+        "CC(=O)C.CCC=O>>CC(=O)CC(O)CC", ReactionContext.ionic
     )
     alpha_assignments = [
         a for a in result.assignments

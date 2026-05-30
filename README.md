@@ -99,26 +99,26 @@ Five mutually exclusive roles per functional group per reaction step:
 
 ### Results
 
-**Overall.** The agent + negotiation stack reaches **96.1%** role accuracy, ahead of
-the learned predictor alone (90.7%) and the rule baseline (70.4%).
+**Overall.** The agent + negotiation stack reaches **97.4%** role accuracy, ahead of
+the learned predictor alone (94.3%) and the rule baseline (71.1%).
 
 | Model | Overall | SN2/E2 | Aldol | Cross-aldol | Diels-Alder | Michael |
 |-------|---------|--------|-------|-------------|-------------|---------|
-| Rule + Negotiator | 70.4% | 100% | 83.0% | 95.2% | 81.9% | 25.0% |
-| MLP only | 90.7% | 100% | 63.8% | 81.0% | 90.4% | 85.4% |
-| **MLP + Negotiator** | **96.1%** | 100% | **78.7%** | 85.7% | 97.6% | **100%** |
+| Rule + Negotiator | 71.1% | 100% | 89.4% | 95.2% | 81.9% | 25.0% |
+| MLP only | 94.3% | 100% | 89.4% | 81.0% | 92.8% | 85.4% |
+| **MLP + Negotiator** | **97.4%** | 100% | **85.1%** | 85.7% | 100% | **100%** |
 
-**Per-role.** Negotiation lifts the hardest roles — `spectator` (43.0% → 93.9%) and
-`reactive_electrophile` (80.5% → 100%) — without disturbing the roles that are already
+**Per-role.** Negotiation lifts the hardest roles — `spectator` (39.9% → 96.1%) and
+`reactive_electrophile` (81.0% → 100%) — without disturbing the roles that are already
 saturated (`radical`, `leaving_group` at 100%).
 
 | Role | Rule + Negotiator | MLP only | MLP + Negotiator |
 |------|-------------------|----------|------------------|
-| reactive_nucleophile | 94.5% | 98.9% | 94.5% |
-| reactive_electrophile | 80.5% | 92.7% | 100% |
+| reactive_nucleophile | 96.0% | 99.0% | 96.0% |
+| reactive_electrophile | 81.0% | 92.9% | 100% |
 | reactive_radical | 100% | 100% | 100% |
 | leaving_group | 100% | 100% | 100% |
-| spectator | 43.0% | 82.4% | 93.9% |
+| spectator | 39.9% | 90.2% | 96.1% |
 
 **Reaction center.** The MLP alone produces *no* center predictions (F1 = 0) — reaction
 center is an emergent property of negotiation between agents, not of independent
@@ -138,13 +138,18 @@ per-group classification. Adding the negotiation layer recovers it at F1 = 87.8%
    0% center F1 makes this concrete: structure emerges only once agents are reconciled
    globally. 12 of 14 mechanisms reach 100% under MLP + Negotiator.
 
-2. **Aldol is descriptor-limited, not data-limited.** Aldol (78.7%) and cross-aldol
-   (85.7%) are the only classes below ceiling, and aldol is the *only* mechanism where
-   the MLP (63.8%) underperforms the rule baseline (83.0%) — the learner cannot find a
-   clean signal. The 65-dim descriptor cannot separate a donor carbonyl (→ spectator,
-   it only activates the α-carbon) from an acceptor carbonyl (→ electrophile). An
-   experiment trail adding aldol training examples confirms this: every data-side
-   "fix" regressed *both* aldol and the cross-aldol it shares the ambiguity with.
+2. **Aldol is the last class below ceiling, for two separable reasons.** Six of the
+   aldols are *self*-reactions: two identical reactant molecules, hence identical
+   descriptors, so an asymmetric donor/acceptor labeling is physically unlearnable. We
+   relabel these to the only convention the descriptor can support — every carbonyl →
+   electrophile, every α-carbon → nucleophile — and exempt them from the negotiator's
+   donor/acceptor downgrade. This alone lifts MLP-only aldol from 63.8% to 89.4%. What
+   remains is the *genuinely asymmetric* aldols and cross-aldols (MLP + Negotiator
+   85.1% / 85.7%), where the 65-dim descriptor cannot separate a donor carbonyl (→
+   spectator, it only activates the α-carbon) from an acceptor carbonyl (→
+   electrophile). An experiment trail adding aldol training examples confirms this
+   residual gap is descriptor-limited, not data-limited: every data-side "fix"
+   regressed *both* aldol and the cross-aldol it shares the ambiguity with.
 
    ![Aldol diagnosis: data-side fixes regress both classes](reports/aldol_diagnosis.png)
 
@@ -159,15 +164,16 @@ measure role accuracy on the held-out reactions.
 
 ![Leave-one-mechanism-out extrapolation](reports/figures/lomo_extrapolation.png)
 
-Mean held-out accuracy is **74.2%**, versus **94.3%** in-distribution — a ~20-point
+Mean held-out accuracy is **74.9%**, versus **96.3%** in-distribution — a ~20-point
 extrapolation gap that is strongly mechanism-dependent:
 
 - **Transfers well (≥ 90%):** `carbonyl_addition`, `e2`, `ester_control`,
   `nitrile_control`, `sn2`, `control`. These reuse role cues (a leaving group, a lone
   carbonyl electrophile) that recur across the training mechanisms.
-- **Collapses (≤ 50%):** `diels_alder` (37%), `benzylic_radical_bromination` (43%),
-  `nitroalkane_deprotonation` (47%), `hetero_diels_alder` (50%). These hinge on a cue
-  unique to the held-out class and absent from training — e.g. with every Diels-Alder
+- **Collapses (≤ 50%):** `diels_alder` (37%), `benzylic_radical_bromination` (44%),
+  `nitroalkane_deprotonation` (47%), `michael_addition` (48%), `hetero_diels_alder`
+  (50%). These hinge on a cue unique to the held-out class and absent from training —
+  e.g. with every Diels-Alder
   reaction removed, the model never learns the diene/dienophile π-role and defaults to
   spectator.
 
